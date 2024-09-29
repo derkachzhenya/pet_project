@@ -1,52 +1,88 @@
 <x-guest-layout>
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <div class="text-center">
+            <p class="text-xl">Привіт!</p>
+            <p class="mb-4">Будь ласка введіть свої дані, щоб зареєструватися</p>
+        </div>
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-label for="name" :value="__('Ім\'я')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="Введіть ім'я"
+                :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <!-- Surname -->
+        <div class="mt-4">
+            <x-input-label for="surname" :value="__('Прізвище')" />
+            <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname"
+                placeholder="Введіть прізвище" :value="old('surname')" required autofocus autocomplete="surname" />
+            <x-input-error :messages="$errors->get('surname')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-label for="email" :value="__('Електронна пошта')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                placeholder="Введіть вашу пошту" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Location -->
+        <div class="mt-4">
+            <x-input-label for="location" :value="__('Локація')" />
+            <select id="location" class="block mt-1 w-full rounded-md border-gray-300" type="text" name="location"
+                placeholder="Введіть ім'я" :value="old('location')" required autofocus autocomplete="location">
+                <option selected>Виберіть локацію</option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+            </select>
+            <x-input-error :messages="$errors->get('location')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Пароль')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+            <x-text-input id="password" class="block mt-1 w-full" type="password" placeholder="Введіть введіть"
+                name="password" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation" :value="__('Повторіть пароль')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" placeholder="Повторіть пароль"
+                type="password" name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        <div class="flex items-center mt-4">
+            <input id="default-checkbox" type="checkbox" value="" required
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Я погоджуюсь
+                з <a href="{{ route('confidentiality.index') }}"
+                    class="font-semibold text-blue-600 underline decoration-indigo-500">Політикою
+                    конфіденційності</a></label>
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-center mt-4">
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Зареєструватися') }}
             </x-primary-button>
+        </div>
+        <div class="text-center mt-3">
+            <p class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Вже маєте акаунт? <a
+                    href="{{ route('login') }}"
+                    class="font-semibold text-blue-600 underline
+                decoration-indigo-500">Вхід</a></p>
         </div>
     </form>
 </x-guest-layout>

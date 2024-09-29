@@ -17,7 +17,6 @@
 
     @yield('main')
 
-
     @include('includes.footer')
 
 

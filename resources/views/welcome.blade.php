@@ -6,23 +6,22 @@
                 <span class="text-7xl font-semibold items-center">Звідси почінається найкраща дружба</span>
 
                 <div class="flex pt-12 ml-52">
-                    <form class="mr-6">
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Вид
+                    <form class="mr-6 mt-7 relative w-44">
+                        <label for="countries" class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вид
                             тварин</label>
                         <select id="countries"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Коти</option>
                             <option value="US">Собаки</option>
-
                         </select>
                     </form>
-                    <form class="mr-6">
-                        <label for="countries"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Локації</label>
+                    <form class="mr-6 mt-7 relative w-44">
+                        <label for="countries "
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Локації</label>
                         <select id="countries"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Дніпро</option>
