@@ -1,8 +1,10 @@
 @extends('main.index')
 @section('main')
-    <div class="w-5/6 mx-auto">
+    <div class="w-full md:w-5/6 mx-auto">
         <div class="flex justify-between mt-12">
             <p class="font-semibold text-xl">Фільтри</p>
+
+
             <div>
                 <select id="countries"
                     class="border border-gray-300 text-gray-900 text-sm rounded-lg  mb-5 w-48 focus:ring-blue-500
@@ -178,7 +180,7 @@
 
 
             <div class="w-3/4">
-                <div class="grid grid-cols-3 gap-4 ml-5">
+                <div class="md:grid md:grid-cols-3 md:gap-4 ml-5">
                     <div>
                         <div
                             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

@@ -1,11 +1,12 @@
 @extends('main.index')
 @section('main')
+
     <main>
         <div class ="flex mx-auto w-full">
-            <div class ="w-full text-right pt-56">
-                <span class="text-7xl font-semibold items-center">Звідси почінається найкраща дружба</span>
+            <div class ="w-full text-center sm:text-right pt-10 sm:pt-56">
+                <span class="text-xl sm:text-7xl font-semibold items-center">Звідси почінається найкраща дружба</span>
 
-                <div class="flex pt-12 ml-52">
+                <div class="flex pt-12 mx-3 sm:ml-52">
                     <form class="mr-6 mt-7 relative w-44">
                         <label for="countries" class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вид
                             тварин</label>
@@ -33,7 +34,7 @@
                     </form>
                     <div class="pt-7">
                         <button type="button"
-                            class="text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium 
+                            class="text-white bg-violet-700 hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium 
                     rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
                      dark:focus:ring-blue-800 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
@@ -46,18 +47,18 @@
                     </div>
                 </div>
                 <div class="mt-5">
-                    <img src="vector.png" class="text-right" alt="Flowbite Logo" />
+                    <img src="vector.png" class="text-right" alt="vectorLogo" />
                 </div>
-                <div class="mt-12 ml-40">
-                    <img src="animals.png" class="text-right" alt="Flowbite Logo" />
+                <div class="mt-12 sm:ml-40">
+                    <img src="animals.png" class="text-right" alt="animalsLogo" />
                 </div>
             </div>
 
-            <div class = "w-full text-right">
-                <img src="girl.png" class="text-right" alt="Flowbite Logo" />
+            <div class="w-full text-right hidden sm:block">
+                <img src="girl.png" class="text-right" alt="girlLogo" />
             </div>
         </div>
-        <div class="relative h-58 w-3/4 bg-blue-700 rounded-r-lg p-6 shadow-lg">
+        <div class="relative h-58 w-3/4 bg-violet-700 rounded-r-lg p-6 shadow-lg">
             <div class="flex justify-center">
                 <div class="flex flex-col items-center justify-center p-4">
                     <span class="text-4xl font-medium mb-3 text-white">150</span>
@@ -87,8 +88,8 @@
             <span class="text-3xl font-medium">Найновіші оголошення</span>
         </div>
 
-        <div class="grid grid-cols-4 gap-4 w-5/6 mx-auto mt-6 mb-12">
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="sm:grid sm:grid-cols-4 gap-4 w-5/6 mx-auto mt-6 mb-12">
+            <div class="max-w-sm bg-white border border-gray-200 mt-6 sm:mt-0 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg h-60 w-full object-cover" src="main/dog.png" alt="" />
                 </a>
@@ -100,7 +101,7 @@
                     </a>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="mr-2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
@@ -109,7 +110,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="mr-2">
                             <circle cx="12" cy="5" r="3"></circle>
                             <line x1="12" y1="8" x2="12" y2="21"></line>
@@ -119,7 +120,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                             <line x1="16" y1="2" x2="16" y2="6" />
@@ -136,7 +137,7 @@
 
 
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm bg-white border border-gray-200 mt-6 sm:mt-0 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
                 </a>
@@ -148,7 +149,7 @@
                     </a>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
@@ -157,7 +158,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <circle cx="12" cy="5" r="3"></circle>
                             <line x1="12" y1="8" x2="12" y2="21"></line>
@@ -167,7 +168,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                             <line x1="16" y1="2" x2="16" y2="6" />
@@ -184,7 +185,7 @@
 
 
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm bg-white border border-gray-200 mt-6 sm:mt-0 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg h-60 w-full object-cover" src="main/hom.png" alt="" />
                 </a>
@@ -196,7 +197,7 @@
                     </a>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
@@ -205,7 +206,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <circle cx="12" cy="5" r="3"></circle>
                             <line x1="12" y1="8" x2="12" y2="21"></line>
@@ -215,7 +216,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                             <line x1="16" y1="2" x2="16" y2="6" />
@@ -232,7 +233,7 @@
 
 
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm bg-white border border-gray-200 mt-6 sm:mt-0 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat.png" alt="" />
                 </a>
@@ -244,7 +245,7 @@
                     </a>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
@@ -253,7 +254,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <circle cx="12" cy="5" r="3"></circle>
                             <line x1="12" y1="8" x2="12" y2="21"></line>
@@ -263,7 +264,7 @@
                     </p>
                     <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            fill="none" stroke="blue" stroke-width="2" stroke-linecap="round"
+                            fill="none" stroke="purple" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="mr-2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                             <line x1="16" y1="2" x2="16" y2="6" />

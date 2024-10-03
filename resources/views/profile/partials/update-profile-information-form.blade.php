@@ -1,12 +1,15 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <a href="{{ route('dashboard') }}" style="text-decoration: underline;">Повернутися назад</a>
+
+        <h2 class="mt-5 text-lg font-medium text-gray-900">
             {{ __('Інформація профілю') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Оновіть інформацію профілю та електронну адресу вашого облікового запису.") }}
+            {{ __('Оновіть інформацію профілю та електронну адресу вашого облікового запису.') }}
         </p>
+
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -19,21 +22,31 @@
 
         <div>
             <x-input-label for="name" :value="__('Ім\'я')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
+                required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
+            <x-input-label for="surname" :value="__('Прізвище')" />
+            <x-text-input id="surname" name="surname" type="text" class="mt-1 block w-full" :value="old('surname', $user->surname)"
+                required autofocus autocomplete="surname" />
+            <x-input-error class="mt-2" :messages="$errors->get('surname')" />
+        </div>
+
+        <div>
             <x-input-label for="email" :value="__('Електронна пошта')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
+                required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
                         {{ __('Ваша електронна адреса не підтверджена.') }}
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification"
+                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Натисніть тут, щоб повторно надіслати лист для підтвердження.') }}
                         </button>
                     </p>
@@ -51,14 +64,10 @@
             <x-primary-button>{{ __('Зберегти') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Збережено.') }}</p>
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600">{{ __('Збережено.') }}</p>
             @endif
+
         </div>
     </form>
 </section>

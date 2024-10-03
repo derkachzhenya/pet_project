@@ -13,6 +13,7 @@ class CatalogController extends Controller
      */
     public function index()
     {
+        
         return view('catalog.index');
     }
 
@@ -37,7 +38,7 @@ class CatalogController extends Controller
      */
     public function show(Catalog $catalog)
     {
-        //
+        return view('catalog.show');
     }
 
     /**

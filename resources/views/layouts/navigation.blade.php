@@ -13,7 +13,7 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <a href="#"
+                <a href="{{ route('pet.create.step.one') }}"
                 class="text-white bg-purple-700 mr-5 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">+
                 Додати оголошення</a>
                 <x-dropdown align="right" width="48">
