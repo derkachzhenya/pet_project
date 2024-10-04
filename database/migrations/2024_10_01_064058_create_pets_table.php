@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('price');
+            $table->string('title');
+            // $table->string('petName');
+            $table->decimal('price');
+            // $table->string('location');
+            // $table->string('petOrigin');
             $table->timestamps();
         });
     }

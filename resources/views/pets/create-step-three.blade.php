@@ -28,21 +28,37 @@
                     </div>
 
                     <div class="relative w-full mt-8">
-                        <label for="countries "
-                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Назва
-                            оголошення</label>
-                        <textarea id="countries"
-                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        </textarea>
+                        <label for="textarea"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3 z-10 px-1">
+                            Додаткова інформація
+                        </label>
+                        <div class="relative">
+                            <textarea id="textarea" maxlength="300" style="height: 200px;"
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                oninput="updateCounter()"></textarea>
+                            <div id="charCounter"
+                                class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
+                                0/300
+                            </div>
+                        </div>
                     </div>
+                    
+                    <script>
+                        function updateCounter() {
+                            const textarea = document.getElementById('textarea');
+                            const counter = document.getElementById('charCounter');
+                            counter.textContent = `${textarea.value.length}/300`;
+                        }
+                    </script>
+                    
+                    
+
 
                     <p class="mt-4">Фото</p>
                     <p class="text-sm">Перше фото буде на обкладинці оголошення, перетягніть, щоб змінити порядок фото.</p>
 
                     <div class="flex justify-between">
-                        <a href="{{route('pet.create.step.two')}}"
+                        <a href="{{ route('pet.create.step.two') }}"
                             class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
                                        focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
                                          border-violet-800">Назад</a>

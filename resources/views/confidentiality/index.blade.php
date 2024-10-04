@@ -1,7 +1,7 @@
 @extends('main.index')
 @section('main')
     <div class="w-4/5 mx-auto">
-        <p class="text-center mt-5 text-6xl font-normal">Confidentiality</p>
+        <p class="text-center mt-5 text-4xl font-normal">Політика конфіденційності</p>
         <p class="mb-12 mt-5 text-lg font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt perspiciatis nostrum, fugit placeat explicabo
             dolores, dolorum earum sed doloribus
             ullam error voluptatibus neque aperiam ut quae numquam iure sapiente ea deleniti labore. Nisi dolor facilis

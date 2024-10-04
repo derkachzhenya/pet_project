@@ -11,7 +11,7 @@ class StorePetRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class StorePetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:50',
+            'price' => 'required|numeric|min:0|decimal:0,2',
         ];
     }
+
+    public function messages(): array
+{
+    return [
+        'title.required' => 'Ви не ввели дані',
+        'title.string' => 'Поле має бути рядком',
+        'price.required' => 'Ви не ввели дані',
+        'price.numeric' => 'Поле ціни має бути числом',
+    ];
+}
 }

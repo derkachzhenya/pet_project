@@ -178,478 +178,68 @@
             </div>
 
 
-
             <div class="w-3/4">
                 <div class="md:grid md:grid-cols-3 md:gap-4 ml-5">
-                    <div>
+                    @foreach ($pets->take(4) as $pet)
                         <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                            class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <a href="{{ route('pets.show', $pet->id) }}">
+                                <img class="rounded-t-lg h-48 w-full object-cover" src="main/dog.png" alt="" />
 
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
+                                <div class="p-5">
                                     <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
+                                        {{ $pet->title }}
                                     </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
                             </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
+                            <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="purple" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Кам'янець подільский
+                            </p>
+                            <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="purple" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                                    <circle cx="12" cy="5" r="3"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="21"></line>
+                                    <line x1="8" y1="16" x2="16" y2="16"></line>
+                                </svg>
+                                Хлопчик
+                            </p>
+                            <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
+                                    height="16" fill="none" stroke="purple" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                                3,5 роки
+                            </p>
+                            <p class="font-bold text-right text-xl">
+                                ₴ {{ $pet->price }}
+                            </p>
                         </div>
-                    </div>
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                            <a href="#">
-                                <img class="rounded-t-lg h-60 w-full object-cover" src="main/cat2.png" alt="" />
-                            </a>
-                            <div class="p-5">
-                                <a href="#">
-                                    <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021
-                                    </h5>
-                                </a>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                        <circle cx="12" cy="10" r="3"></circle>
-                                    </svg>
-                                    Кам'янець подільский
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <circle cx="12" cy="5" r="3"></circle>
-                                        <line x1="12" y1="8" x2="12" y2="21"></line>
-                                        <line x1="8" y1="16" x2="16" y2="16"></line>
-                                    </svg>
-                                    Хлопчик
-                                </p>
-                                <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
-                                        height="16" fill="none" stroke="blue" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
-                                    3,5 роки
-                                </p>
-                                <p class="font-bold text-right text-xl">
-                                    ₴ 345,6
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ... -->
                 </div>
-                <!-- Pagination -->
-                <div class="text-center my-10">
-                    <nav aria-label="Page navigation example text-center">
-                        <ul class="inline-flex -space-x-px text-sm">
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                          </li>
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                          </li>
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                          </li>
-                          <li>
-                            <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                          </li>
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                          </li>
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                          </li>
-                          <li>
-                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                          </li>
-                        </ul>
-                      </nav>
-                </div>
-                <!-- EndPagination -->
+                @endforeach
             </div>
         </div>
-       
+
     </div>
- 
+    <!-- Pagination -->
+    <div class="flex justify-end my-10">
+        <div class="w-96">
+            {{ $pets->links() }}
+        </div>
+    </div>
+    <!-- EndPagination -->
+    </div>
+    </div>
+
+    </div>
 @endsection

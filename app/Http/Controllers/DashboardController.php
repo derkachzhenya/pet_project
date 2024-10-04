@@ -11,4 +11,6 @@ class DashboardController extends Controller
 {
     return view('dashboard', ['pets' => Pet::with('user')->latest()->get()]);
 }
+
+
 }

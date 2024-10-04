@@ -24,14 +24,12 @@ class PetController extends Controller
         return view('pets.create-step-two',compact('pet'));
     }
 
-    public function postCreateStepOne(Request $request)
+    public function postCreateStepOne(StorePetRequest $request)
     {
 
-        $validated = $request->validate([
-            'price' => 'required|string|max:255',
-        ]);
- 
-        $request->user()->pets()->create($validated);
+
+        $data = $request->validated();
+        $request->user()->pets()->create($data);
         // $validatedData = $request->validate([
         //     'name' => 'required|unique:products',
         //     'amount' => 'required|numeric',

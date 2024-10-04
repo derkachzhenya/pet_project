@@ -10,7 +10,7 @@
 
                     <div class="relative w-full mt-8">
                         <label for="countries "
-                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Різновид</label>
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Різновид<span class="text-red-500">*</span></label>
                         <select id="countries"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -27,7 +27,7 @@
                     <div class="flex gap-3">
                         <div class="relative w-3/5 mt-8">
                             <label for="countries "
-                                class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вік</label>
+                                class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вік<span class="text-red-500">*</span></label>
                             <input id="countries"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -39,22 +39,16 @@
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                                dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Місяців</option>
-                                <option value="KYI">1</option>
-                                <option value="KHR">2</option>
-                                <option value="ODS">3</option>
-                                <option value="DNI">4</option>
-                                <option value="LVI">5</option>
-                                <option value="ZAP">6</option>
-                                <option value="VIN">7</option>
-                                <option value="MYK">8</option>
-                                <option value="KHM">9</option>
-                                <option value="ZHY">10</option>
+                                <option selected>Період</option>
+                                <option value="KYI">Днів</option>
+                                <option value="KHR">Тижнів</option>
+                                <option value="ODS">Місяців</option>
+                                <option value="DNI">Років</option>
                             </select>
                         </div>
                     </div>
 
-                    <p class="mt-5">Стать</p>
+                    <p class="mt-5">Стать<span class="text-red-500">*</span></p>
                     <div class="flex items-center mb-4 mt-3">
                         <input id="default-radio-1" type="radio" value="" name="default-radio"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
