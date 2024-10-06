@@ -12,7 +12,7 @@ class CatalogController extends Controller
   
     public function index()
     {
-        $pets = Pet::with('user')->latest()->paginate(15);
+        $pets = Pet::with('user')->latest()->paginate(10);
         return view('catalog.index', ['pets' => $pets]);
     }
 

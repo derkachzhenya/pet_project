@@ -3,7 +3,7 @@
     <main>
         <div class ="flex mx-auto w-full">
             <div class ="w-full text-center sm:text-right pt-10 sm:pt-56">
-                <span class="text-xl sm:text-7xl font-semibold items-center">Звідси почінається найкраща дружба</span>
+                <span class="text-4xl sm:text-7xl font-semibold items-center">Звідси почінається найкраща дружба</span>
 
                 <div class="flex pt-12 mx-3 sm:ml-52">
                     <form class="mr-6 mt-7 relative w-44">

@@ -20,22 +20,26 @@
                         @if (Route::has('login'))
                             <nav class="-mx-3 flex flex-1 justify-end">
                                 @auth
-                                    <a href="{{ url('/dashboard') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                        {{ Auth::user()->name }}
-                                    </a>
+                               
+                                <a href="{{ url('/dashboard') }}"
+                                class="flex items-center rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
+                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 100 100">                                            
+                                     <circle cx="50" cy="50" r="50" fill="#e9d5ff"/>
+                                     <circle cx="50" cy="38" r="18" fill="#a855f7"/>
+                                     <path d="M50 60 
+                                              Q30 60 20 80
+                                              Q20 100 50 100
+                                              Q80 100 80 80
+                                              Q70 60 50 60" 
+                                           fill="#a855f7"/>
+                                 </svg>
+                                 {{ Auth::user()->name }}
+                             </a>                      
                                 @else
                                     <a href="{{ route('login') }}"
                                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                         Логін
                                     </a>
-
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}"
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                                            Реєстрація
-                                        </a>
-                                    @endif
                                 @endauth
                             </nav>
                         @endif

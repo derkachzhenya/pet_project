@@ -1,6 +1,9 @@
+@include('layouts.navigationLog')
 <x-guest-layout>
+    
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -10,7 +13,9 @@
         </div>
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Електронна пошта')" />
+            <x-input-label for="surname">
+                {{ __('Електронна пошта') }}<span class="text-red-500">*</span>
+            </x-input-label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" placeholder="Введіть ім'я"
                 :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -18,7 +23,9 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Пароль')" />
+            <x-input-label for="surname">
+                {{ __('Пароль') }}<span class="text-red-500">*</span>
+            </x-input-label>
 
             <x-text-input id="password" placeholder="Введіть пароль" class="block mt-1 w-full" type="password"
                 name="password" required autocomplete="current-password" />
@@ -51,8 +58,9 @@
             </x-primary-button>
         </div>
         <div class="text-center mt-3">
-            <p class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ще не маєте акаунта? <a href="{{route('register')}}" class="font-semibold text-blue-600 underline
+            <p class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ще не маєте аккаунту? <a href="{{route('register')}}" class="font-semibold text-blue-600 underline
                 decoration-indigo-500">Зареєструватися</a></p> 
         </div>
     </form>
 </x-guest-layout>
+@include('includes.footer')

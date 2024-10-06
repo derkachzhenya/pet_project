@@ -19,7 +19,19 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 100 100">                                            
+                                    <circle cx="50" cy="50" r="50" fill="#e9d5ff"/>
+                                    <circle cx="50" cy="38" r="18" fill="#a855f7"/>
+                                    <path d="M50 60 
+                                             Q30 60 20 80
+                                             Q20 100 50 100
+                                             Q80 100 80 80
+                                             Q70 60 50 60" 
+                                          fill="#a855f7"/>
+                                </svg>
+                                {{ Auth::user()->name }}
+                            </div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

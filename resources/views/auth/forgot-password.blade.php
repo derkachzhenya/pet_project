@@ -1,6 +1,8 @@
+@include('layouts.navigationLog')
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Забули пароль? Не проблема. Просто повідомте нам свою електронну адресу, і ми надішлемо вам посилання для скидання пароля, яке дозволить вам обрати новий.') }}
+    <div class="mb-4 text-sm">
+        <p class="text-center text-2xl">{{ __('Забули пароль? ') }}</p>
+        <p class="text-center mt-3">Не хвилюйтеся, ми відправимо посилання на відновлення паролю на пошту</p>
     </div>
 
     <!-- Session Status -->
@@ -11,15 +13,21 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Електронна пошта')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-label for="email" :value="__('Електронна пошта')" class="absolute left-2 top-2" />
+
+            <x-text-input id="email" class="block w-full" type="email" name="email" :value="old('email')" required
+                autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-center mt-4">
-            <x-primary-button>
-                {{ __('Надіслати посилання для скидання пароля') }}
-            </x-primary-button>
+        <div class="flex items-center justify-center mt-8">
+            <button type="submit"
+                class="text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-4
+                   focus:ring-gray-300 font-medium rounded-full text-sm px-32 py-3">
+                Надіслати посилання
+            </button>
         </div>
+
     </form>
 </x-guest-layout>
+@include('includes.footer')

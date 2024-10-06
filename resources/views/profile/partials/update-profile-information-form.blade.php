@@ -1,14 +1,15 @@
 <section>
+
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="flex justify-between pl-6 pt-6 pb-1 text-gray-900">
+            <div class="font-medium text-2xl">{{ Auth::user()->name }} {{ Auth::user()->surname }}</div>
+            <a href="{{ route('profile.edit') }}" class="pr-6"
+                style="text-decoration: underline; color: blue;">Редагувати
+                профіль</a>
+        </div>
+    </div>
     <header>
-        <a href="{{ route('dashboard') }}" style="text-decoration: underline;">Повернутися назад</a>
-
-        <h2 class="mt-5 text-lg font-medium text-gray-900">
-            {{ __('Інформація профілю') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __('Оновіть інформацію профілю та електронну адресу вашого облікового запису.') }}
-        </p>
+       
 
     </header>
 

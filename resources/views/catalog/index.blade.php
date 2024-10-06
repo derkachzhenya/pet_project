@@ -168,11 +168,109 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-8">
                         <p class="text-lg">Здоров'я</p>
                         <div class="mt-3">
+                            <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
 
+                                <li>
+                                    <input type="checkbox" id="sterilization" value="" class="hidden peer">
+                                    <label for="sterilization"
+                                        class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">Стерилізація</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="vacination" value="" class="hidden peer">
+                                    <label for="vacination"
+                                        class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">Вакцинація</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="chip" value="" class="hidden peer"
+                                        required="">
+                                    <label for="chip"
+                                        class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">Чіп</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="w-full">
+                                    <input type="checkbox" id="option" value="" class="hidden peer">
+                                    <label for="option"
+                                        class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center break-words">
+                                            Обробка від паразитів
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
+                    </div>
+                    <div class="mt-8">
+                        <p class="text-lg">Документи</p>
+                        <div class="mt-3">
+                            <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
+                                <li>
+                                    <input type="checkbox" id="FCI/KCY" value="" class="hidden peer">
+                                    <label for="FCI/KCY"
+                                        class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">FCI/KCY</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="pasport" value="" class="hidden peer"
+                                        required="">
+                                    <label for="pasport"
+                                        class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">Вет паспорт</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="pedigree" value="" class="hidden peer">
+                                    <label for="pedigree"
+                                        class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center">
+                                            <div class="w-full">Родовід</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="w-full">
+                                    <input type="checkbox" id="metrics" value="" class="hidden peer">
+                                    <label for="metrics"
+                                        class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                        <div class="text-center break-words">
+                                            Метрика цуценяти
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="flex justify-center">
+                                <button type="submit"
+                                    class="text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
+                                           focus:ring-gray-300 font-medium rounded-full text-sm px-32 py-2.5 me-2 mb-2">
+                                    Вперед
+                                </button>
+                            </div>
+                            <div class="flex justify-center">
+                                <a href="#"
+                                class="mt-2 bg-white focus:outline-none focus:ring-4
+                                       focus:ring-gray-300 font-medium rounded-full text-sm w-full py-2 me-2 mb-2 border-2
+                                       border-gray-600 text-center">Очістити фільтри</a>
+                             
+                            </div>
+                        </div>
+
                     </div>
                 </form>
             </div>

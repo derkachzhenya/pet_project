@@ -1,5 +1,6 @@
+@include('layouts.navigationLog')
 <x-guest-layout>
-
+  
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="text-center">
@@ -8,7 +9,9 @@
         </div>
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Ім\'я')" />
+            <x-input-label for="surname">
+                {{ __('Ім\'я') }}<span class="text-red-500">*</span>
+            </x-input-label>
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="Введіть ім'я"
                 :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -16,15 +19,19 @@
 
         <!-- Surname -->
         <div class="mt-4">
-            <x-input-label for="surname" :value="__('Прізвище')" />
+            <x-input-label for="surname">
+                {{ __('Прізвище') }}<span class="text-red-500">*</span>
+            </x-input-label>
             <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname"
                 placeholder="Введіть прізвище" :value="old('surname')" required autofocus autocomplete="surname" />
             <x-input-error :messages="$errors->get('surname')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Електронна пошта')" />
+        <div class="mt-4 relative">
+            <x-input-label for="surname">
+                {{ __('Електронна пошта') }}<span class="text-red-500">*</span>
+            </x-input-label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                 placeholder="Введіть вашу пошту" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -32,7 +39,9 @@
 
         <!-- Location -->
         <div class="mt-4">
-            <x-input-label for="location" :value="__('Локація')" />
+            <x-input-label for="surname">
+                {{ __('Локація') }}<span class="text-red-500">*</span>
+            </x-input-label>
             <select id="location" class="block mt-1 w-full rounded-md border-gray-300" type="text" name="location"
                 placeholder="Введіть ім'я" :value="old('location')" required autofocus autocomplete="location">
                 <option selected>Виберіть локацію</option>
@@ -44,7 +53,9 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Пароль')" />
+            <x-input-label for="surname">
+                {{ __('Пароль') }}<span class="text-red-500">*</span>
+            </x-input-label>
 
             <x-text-input id="password" class="block mt-1 w-full" type="password" placeholder="Введіть введіть"
                 name="password" required autocomplete="new-password" />
@@ -54,7 +65,9 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Повторіть пароль')" />
+            <x-input-label for="surname">
+                {{ __('Повторіть пароль') }}<span class="text-red-500">*</span>
+            </x-input-label>
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full" placeholder="Повторіть пароль"
                 type="password" name="password_confirmation" required autocomplete="new-password" />
@@ -68,7 +81,7 @@
             <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Я погоджуюсь
                 з <a href="{{ route('confidentiality.index') }}"
                     class="font-semibold text-blue-600 underline decoration-indigo-500">Політикою
-                    конфіденційності</a></label>
+                    конфіденційності та Правилами користування</a></label>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -86,3 +99,4 @@
         </div>
     </form>
 </x-guest-layout>
+@include('includes.footer')
