@@ -12,5 +12,17 @@ class DashboardController extends Controller
     return view('dashboard', ['pets' => Pet::with('user')->latest()->get()]);
 }
 
+public function show(Pet $pet)
+{
+    
+    return view('dashboard.show', compact('pet'));
+}
+
+public function edit(Pet $pet)
+{
+    
+    return view('dashboard.edit', compact('pet'));
+}
+
 
 }

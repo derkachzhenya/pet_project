@@ -58,8 +58,8 @@
             </x-primary-button>
         </div>
         <div class="text-center mt-3">
-            <p class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ще не маєте аккаунту? <a href="{{route('register')}}" class="font-semibold text-blue-600 underline
-                decoration-indigo-500">Зареєструватися</a></p> 
+            <p class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ще не маєте аккаунту? <a href="{{route('register')}}" class="font-semibold text-violet-600 underline
+                decoration-violet-600">Зареєструватися</a></p> 
         </div>
     </form>
 </x-guest-layout>

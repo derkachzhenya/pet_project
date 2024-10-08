@@ -1,24 +1,33 @@
 @extends('main.index')
 @section('main')
-    <div class="w-full md:w-5/6 mx-auto">
+    <div class="w-full md:w-5/6 px-4 mx-auto">
         <div class="flex justify-between mt-12">
             <p class="font-semibold text-xl">Фільтри</p>
 
 
-            <div>
+            <div class="flex">
                 <select id="countries"
                     class="border border-gray-300 text-gray-900 text-sm rounded-lg  mb-5 w-48 focus:ring-blue-500
                          focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Сортувати за</option>
-                    <option value="US">Собаки</option>
+                    <option value="US">Найновіші</option>
+                    <option value="US">Від дешевих до дорогих</option>
+                    <option value="US">Від дорогих до дешевих</option>
                 </select>
+                <div class="pl-4 pt-3">
+                    <a href=""><img src="{{ asset('search/colblue.png') }}" alt=""></a>
+                </div>
+                <div class="pl-3 pt-3">
+                    <a href=""><img class="h-5" src="{{ asset('search/rowgray.png') }}" alt=""></a>
+                </div>
             </div>
+
         </div>
-        <div class="flex">
+        <div class="flex justify-between">
             <div class="w-1/4">
                 <form action="">
-                    <div class="relative w-full">
+                    <div class="relative w-40 md:w-full">
                         <label for="countries "
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вид
                             тварин</label>
@@ -26,53 +35,52 @@
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Кіт</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option selected>Оберіть вид тварин</option>
+                            <option value="US">Пес</option>
+                            <option value="US">Кіт</option>
+                            <option value="CA">Попугай</option>
+                            <option value="FR">Хомяк</option>
+                            <option value="DE">Кролик</option>
                         </select>
                     </div>
-                    <div class="mt-5 relative w-full">
-                        <label for="countries "
+                    <div class="mt-5 relative w-40 md:w-full">
+                        <label for="countries"
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Різновид</label>
                         <select id="countries"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Оберіть різновид</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option value="US">Риби</option>
+                            <option value="CA">Птахи</option>
+                            <option value="FR">Плазуни</option>
+                            <option value="DE">Ссавці</option>
                         </select>
                     </div>
-                    <div class="mt-5 relative w-full">
-                        <label for="countries "
+                    <div class="mt-5 relative w-40 md:w-full">
+                        <label for="countries"
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Локації</label>
                         <select id="countries"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Дніпро</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option selected>Оберіть локацію</option>
+                            <option value="US">Київ</option>
+                            <option value="CA">Дніпро</option>
+                            <option value="FR">Львів</option>
+                            <option value="DE">Ірпінь</option>
                         </select>
                     </div>
-                    <div class="mt-5 relative w-full">
-                        <label for="countries "
+                    <div class="mt-5 relative w-40 md:w-full">
+                        <label for="countries"
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Походження</label>
                         <select id="countries"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Приватний власник</option>
-                            <option value="US">United States</option>
-                            <option value="CA">Canada</option>
-                            <option value="FR">France</option>
-                            <option value="DE">Germany</option>
+                            <option selected>Оберіть походження</option>
+                            <option value="US">Приватний власник</option>
+                            <option value="CA">Розплідник</option>
                         </select>
                     </div>
                     <div class="mt-6">
@@ -82,18 +90,18 @@
                                 class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Мін</label>
                             <input type="text" id="first_name"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                                 focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="" required />
                             <select id="countries"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                     focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                     focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                       dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option selected>Місяців</option>
-                                <option value="US">United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="FR">France</option>
-                                <option value="DE">Germany</option>
+                                <option selected>Період</option>
+                                <option value="US">Днів</option>
+                                <option value="CA">Тижнів</option>
+                                <option value="FR">Місяців</option>
+                                <option value="DE">Років</option>
                             </select>
                         </div>
                         <div>
@@ -102,19 +110,19 @@
                                     class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Макс</label>
                                 <input type="text" id="first_name"
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                     focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                                     focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                       dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="" required />
 
                                 <select id="countries"
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                         focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>Місяців</option>
-                                    <option value="US">United States</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="FR">France</option>
-                                    <option value="DE">Germany</option>
+                                    <option selected>Період</option>
+                                    <option value="US">Днів</option>
+                                    <option value="CA">Тижнів</option>
+                                    <option value="FR">Місяців</option>
+                                    <option value="DE">Років</option>
                                 </select>
                             </div>
                         </div>
@@ -124,13 +132,13 @@
                         <div class="flex mt-3 gap-3">
                             <input type="text" id="first_name"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+                                 focus:border-blue-500 block w-20 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="₴ 0" required />
 
                             <input type="text" id="first_name"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                                 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900
+                                 focus:border-blue-500 block w-20 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900
                                    dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="₴ 10000" required />
                         </div>
@@ -138,7 +146,7 @@
                             <div class="flex mt-1 relative gap-3">
                                 <div class="flex items-center mb-4">
                                     <input id="default-checkbox" type="checkbox" value=""
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 rounded focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-checkbox"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Безкоштовно</label>
                                 </div>
@@ -150,19 +158,19 @@
                         <div class="mt-3">
                             <div class="flex items-center mb-4">
                                 <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-1"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Дівчинка</label>
                             </div>
                             <div class="flex items-center mb-4">
                                 <input checked id="default-radio-2" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-2"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Хлопчик</label>
                             </div>
                             <div class="flex items-center">
                                 <input checked id="default-radio-3" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-3"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Невідомо</label>
                             </div>
@@ -172,7 +180,6 @@
                         <p class="text-lg">Здоров'я</p>
                         <div class="mt-3">
                             <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
-
                                 <li>
                                     <input type="checkbox" id="sterilization" value="" class="hidden peer">
                                     <label for="sterilization"
@@ -255,19 +262,21 @@
                                     </label>
                                 </li>
                             </ul>
-                            <div class="flex justify-center">
+                            <div class="flex flex-col items-center">
                                 <button type="submit"
-                                    class="text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
-                                           focus:ring-gray-300 font-medium rounded-full text-sm px-32 py-2.5 me-2 mb-2">
-                                    Вперед
+                                    class="flex items-center justify-center ml-16 md:ml-0 w-48 md:w-64 text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
+                                           focus:ring-gray-300 font-medium rounded-full text-sm px-4 py-2.5 mb-2">
+                                    <img class="mr-2" src="{{ asset('search/button.png') }}" alt="buttonImg">
+                                    <span>Застосувати фільтри</span>
                                 </button>
-                            </div>
-                            <div class="flex justify-center">
+
                                 <a href="#"
-                                class="mt-2 bg-white focus:outline-none focus:ring-4
-                                       focus:ring-gray-300 font-medium rounded-full text-sm w-full py-2 me-2 mb-2 border-2
-                                       border-gray-600 text-center">Очістити фільтри</a>
-                             
+                                    class="flex items-center justify-center ml-16 md:ml-0 w-48 md:w-64 mt-2 bg-white focus:outline-none focus:ring-4
+                                          focus:ring-gray-300 font-medium rounded-full text-sm px-4 py-2.5 mb-2 border-2
+                                          border-gray-600 text-center">
+                                    <img class="mr-2 h-3" src="{{ asset('search/close.png') }}" alt="buttonImg">
+                                    <span>Очістити фільтри</span>
+                                </a>
                             </div>
                         </div>
 
@@ -276,9 +285,9 @@
             </div>
 
 
-            <div class="w-3/4">
+            <div class="w-60 md:w-3/4">
                 <div class="md:grid md:grid-cols-3 md:gap-4 ml-5">
-                    @foreach ($pets->take(4) as $pet)
+                    @foreach ($pets as $pet)
                         <div
                             class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="{{ route('pets.show', $pet->id) }}">
@@ -330,7 +339,7 @@
 
     </div>
     <!-- Pagination -->
-    <div class="flex justify-end my-10">
+    <div class="flex justify-center ml-28 my-10">
         <div class="w-96">
             {{ $pets->links() }}
         </div>

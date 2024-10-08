@@ -15,104 +15,57 @@ class PetController extends Controller
         return view('pets.create-step-one');
     }
 
-
-
     public function createStepOne(Request $request)
     {
         $pet = $request->session()->get('pet');
-  
-        return view('pets.create-step-two',compact('pet'));
+        return view('pets.create-step-one', compact('pet'));
     }
 
     public function postCreateStepOne(StorePetRequest $request)
     {
-
-
         $data = $request->validated();
-        $request->user()->pets()->create($data);
-        // $validatedData = $request->validate([
-        //     'name' => 'required|unique:products',
-        //     'amount' => 'required|numeric',
-        //     'description' => 'required',
-        // ]);
-  
-        // if(empty($request->session()->get('product'))){
-        //     $product = new Pet();
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }else{
-        //     $product = $request->session()->get('product');
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }
-  
+        $pet = $request->user()->pets()->create($data);
+
+        // Сохраняем pet в сессию
+        $request->session()->put('pet', $pet);
+
         return redirect()->route('pet.create.step.two');
     }
-  
- 
-
 
     public function createStepTwo(Request $request)
     {
-        $product = $request->session()->get('product');
-  
-        return view('pets.create-step-two',compact('product'));
+        $pet = $request->session()->get('pet');
+        return view('pets.create-step-two', compact('pet'));
     }
 
     public function postCreateStepTwo(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'name' => 'required|unique:products',
-        //     'amount' => 'required|numeric',
-        //     'description' => 'required',
-        // ]);
-  
-        // if(empty($request->session()->get('product'))){
-        //     $product = new Pet();
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }else{
-        //     $product = $request->session()->get('product');
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }
-  
         return redirect()->route('pet.create.step.three');
     }
-  
 
-
-
- 
     public function createStepThree(Request $request)
     {
         $pet = $request->session()->get('pet');
-  
-        return view('pets.create-step-three',compact('pet'));
+        return view('pets.create-step-three', compact('pet'));
     }
 
     public function postCreateStepThree(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'name' => 'required|unique:products',
-        //     'amount' => 'required|numeric',
-        //     'description' => 'required',
-        // ]);
-  
-        // if(empty($request->session()->get('product'))){
-        //     $product = new Pet();
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }else{
-        //     $product = $request->session()->get('product');
-        //     $product->fill($validatedData);
-        //     $request->session()->put('product', $product);
-        // }
-  
-        return redirect()->route('pet.create.step.three');
+        return redirect()->route('pet.create.step.four');
     }
-  
-    
+
+    public function createStepFour(Request $request)
+    {
+        $pet = $request->session()->get('pet');
+        return view('pets.create-step-four', compact('pet'));
+    }
+
+    public function postCreateStepFour(Request $request)
+    {
+        // Завершение процесса, перенаправляем на главную страницу
+        return redirect()->route('dashboard');
+    }
+
     public function create()
     {
         //

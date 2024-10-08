@@ -239,6 +239,19 @@
                     </div>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
+                <form action="{{ route('pet.create.step.four.post') }}" method="POST">
+                    @csrf
+                    <div class="flex pl-24">
+                        <a href="{{ route('pet.create.step.three') }}"
+                            class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
+                                   focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
+                                   border-violet-800 w-full text-center">Назад</a>
+                        <button type="submit"
+                            class="text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
+                                   focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 mb-2
+                                   w-full text-center">Опублікувати</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -269,3 +282,21 @@
         }
     </script>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,6 +18,12 @@ class HomeController extends Controller
         
         return view('catalog.show', compact('pet'));
     }
+
+    public function edit(Pet $pet)
+    {
+        
+        return view('catalog.edit', compact('pet'));
+    }
 }
 
 

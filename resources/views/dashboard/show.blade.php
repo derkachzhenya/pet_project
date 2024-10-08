@@ -239,6 +239,10 @@
                     </div>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
+                <a href="{{ route('dashboard.edit', $pet->id) }}"
+                    class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
+                               focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
+                                 border-violet-800">Назад</a>
             </div>
         </div>
 
@@ -269,3 +273,9 @@
         }
     </script>
 @endsection
+
+
+
+
+
+

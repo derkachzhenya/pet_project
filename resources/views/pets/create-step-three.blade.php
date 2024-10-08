@@ -5,7 +5,8 @@
             <p class="text-center">Крок 3</p>
             <p class="text-center mt-3 text-2xl">Інформація про тварину</p>
             <div class="mt-12">
-                <form action="">
+                <form action="{{ route('pet.create.step.three.post') }}" method="POST">
+                    @csrf
 
                     <div class="relative w-full mt-8">
                         <label for="countries "

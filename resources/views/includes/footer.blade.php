@@ -18,7 +18,7 @@
                 </ul>
             </div>
         </div>
-        <span class="block text-sm mt-10 text-gray-500 sm:text-center dark:text-gray-400">Copyright 2024 | <a
+        <span class="block text-sm mt-10 text-gray-500 text-center dark:text-gray-400">Copyright 2024 | <a
                 href="{{route('confidentiality.index')}}" class="hover:underline">Політика конфіденційності</a></span>
     </div>
 </footer>
