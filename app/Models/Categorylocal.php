@@ -11,5 +11,6 @@ class Categorylocal extends Model
 
     protected $table = 'categorylocals';
     protected $fillable = ['title'];
+    
 
 }

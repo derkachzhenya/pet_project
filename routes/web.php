@@ -13,11 +13,13 @@ Route::get('/pets/{pet}', [HomeController::class, 'show'])->name('pets.show');
 Route::get('/pets/{pet}/edit', [HomeController::class, 'edit'])->name('pets.edit');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/{pet}', [DashboardController::class, 'show'])->name('dashboard.show');
     Route::get('/dashboard/{pet}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+    Route::put('dashboard/{pet}', [DashboardController::class, 'update'])->name('dashboard.update');
+});
 
 
 Route::middleware('auth')->group(function () {

@@ -4,6 +4,13 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 border-2 bg-white overflow-hidden rounded-xl">
             <p class="text-center">Крок 1</p>
             <p class="text-center mt-3 text-2xl">Загальна інформація</p>
+            <div class="w-4/5 mx-auto mt-4">
+                <div class="flex mx-auto items-center gap-2">
+                    <hr class="border-violet-700 border-2 w-1/3" />
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                </div>
+            </div>
             <div class="mt-12">
                 <form action="{{ route('pet.create.step.one.post') }}" method="POST">
                     @csrf
@@ -146,19 +153,18 @@
     </script>
 
 
-{{-- Скрипт для checkbox "Безкоштовно" --}}
-<script>
-    document.getElementById('default-checkbox').addEventListener('change', function() {
-        const priceInput = document.getElementById('price');
+    {{-- Скрипт для checkbox "Безкоштовно" --}}
+    <script>
+        document.getElementById('default-checkbox').addEventListener('change', function() {
+            const priceInput = document.getElementById('price');
 
-        if (this.checked) {
-            priceInput.value = 0; // Устанавливаем значение "0"
-            priceInput.setAttribute('readonly', true); // Блокируем редактирование
-        } else {
-            priceInput.value = ''; // Очищаем поле
-            priceInput.removeAttribute('readonly'); // Разблокируем редактирование
-        }
-    });
-</script>
-
+            if (this.checked) {
+                priceInput.value = 0; // Устанавливаем значение "0"
+                priceInput.setAttribute('readonly', true); // Блокируем редактирование
+            } else {
+                priceInput.value = ''; // Очищаем поле
+                priceInput.removeAttribute('readonly'); // Разблокируем редактирование
+            }
+        });
+    </script>
 @endsection

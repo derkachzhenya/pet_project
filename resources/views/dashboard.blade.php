@@ -28,7 +28,9 @@
                             </p>
                         </div>
                         <div>
-                            <p>Камянець подільський</p>
+                           
+                            <p>Київ</p>
+                         
                         </div>
                     </div>
                     <div class="md:flex md:justify-between ml-6 mt-3">

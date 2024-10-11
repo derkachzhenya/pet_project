@@ -70,7 +70,7 @@
                         <img class="h-4 w-4 my-auto" src="{{ asset('vectors/paw.png') }}" alt="paw">
                         <p class="pl-1">Вид</p>
                     </div>
-                    <p>Собака</p>
+                    <p>{{ $pet->category->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -276,7 +276,7 @@
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex pl-24">
-                    <a href="{{ route('pet.create.step.three') }}"
+                    <a href="#"
                         class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
                                focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
                                border-violet-800 w-full text-center">Деактивувати</a>

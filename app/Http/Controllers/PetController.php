@@ -19,7 +19,7 @@ class PetController extends Controller
 
     public function index()
     {
-        $categories = Category::all();  // Получаем все категории из базы данных
+        $categories = Category::all();  
         $categorylocals = Categorylocal::all();
         return view('pets.create-step-one', compact('categories', 'categorylocals'));
     }

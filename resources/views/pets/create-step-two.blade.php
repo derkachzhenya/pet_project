@@ -4,6 +4,13 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 border-2 bg-white overflow-hidden rounded-xl">
             <p class="text-center">Крок 2</p>
             <p class="text-center mt-3 text-2xl">Інформація про тварин</p>
+            <div class="w-4/5 mx-auto mt-4">
+                <div class="flex mx-auto items-center gap-2">
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                    <hr class="border-violet-700 border-2 w-1/3" />
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                </div>
+            </div>
             <div class="mt-12">
                 <form action="{{ route('pet.create.step.two.post') }}" method="POST">
                     @csrf
@@ -125,7 +132,7 @@
                         <li class="w-full">
                             <input type="checkbox" id="option" name="processing" value="1" class="hidden peer">
                             <label for="option"
-                                class="flex items-center justify-center w-full min-w-max p-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center break-words">
                                     Обробка від паразитів
                                 </div>
@@ -165,7 +172,7 @@
                         <li class="w-full">
                             <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer">
                             <label for="metrics"
-                                class="flex items-center justify-center w-full min-w-max p-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center break-words">
                                     Метрика цуценяти
                                 </div>

@@ -39,12 +39,14 @@
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Оберіть вид тварин</option>
-                            <option value="US">Пес</option>
-                            <option value="US">Кіт</option>
-                            <option value="CA">Попугай</option>
-                            <option value="FR">Хомяк</option>
-                            <option value="DE">Кролик</option>
+                            <option value="" disabled {{ old('category_id') ? '' : 'selected' }}>Оберіть вид тварини
+                            </option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5 relative w-40 md:w-full">
@@ -54,11 +56,14 @@
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Оберіть різновид</option>
-                            <option value="US">Риби</option>
-                            <option value="CA">Птахи</option>
-                            <option value="FR">Плазуни</option>
-                            <option value="DE">Ссавці</option>
+                            <option value="" disabled {{ old('categoryvariety_id') == '' ? 'selected' : '' }}>Оберіть
+                                різновид</option>
+                            @foreach ($categoryvarieties as $categoryvariety)
+                                <option value="{{ $categoryvariety->id }}"
+                                    {{ old('categoryvariety_id') == $categoryvariety->id ? 'selected' : '' }}>
+                                    {{ $categoryvariety->title }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5 relative w-40 md:w-full">
@@ -68,11 +73,14 @@
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Оберіть локацію</option>
-                            <option value="US">Київ</option>
-                            <option value="CA">Дніпро</option>
-                            <option value="FR">Львів</option>
-                            <option value="DE">Ірпінь</option>
+                            <option value="" disabled {{ old('categorylocal_id') ? '' : 'selected' }}>Оберіть локацію
+                            </option>
+                            @foreach ($categorylocals as $categoryloc)
+                                <option value="{{ $categoryloc->id }}"
+                                    {{ old('categorylocal_id') == $categoryloc->id ? 'selected' : '' }}>
+                                    {{ $categoryloc->title }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mt-5 relative w-40 md:w-full">
@@ -321,7 +329,7 @@
                                         <line x1="12" y1="8" x2="12" y2="21"></line>
                                         <line x1="8" y1="16" x2="16" y2="16"></line>
                                     </svg>
-                                    Хлопчик
+                                    {{ $pet->gender }}
                                 </p>
                                 <p class="mb-3 pl-5 text-gray-700 dark:text-gray-400 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16"
@@ -332,10 +340,14 @@
                                         <line x1="8" y1="2" x2="8" y2="6" />
                                         <line x1="3" y1="10" x2="21" y2="10" />
                                     </svg>
-                                    3,5 роки
+                                    {{ $pet->age }} {{ $pet->categoryage->title }}
                                 </p>
                                 <p class="font-bold text-right text-xl">
-                                    ₴ {{ $pet->price }}
+                                    @if ($pet->price == 0)
+                                        <span>Безкоштовно</span>
+                                    @else
+                                        <span>₴ {{ $pet->price }} </span>
+                                    @endif
                                 </p>
                             </div>
                         </div>

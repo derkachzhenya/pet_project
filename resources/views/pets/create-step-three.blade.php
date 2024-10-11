@@ -4,6 +4,13 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 border-2 bg-white overflow-hidden rounded-xl">
             <p class="text-center">Крок 3</p>
             <p class="text-center mt-3 text-2xl">Інформація про тварину</p>
+            <div class="w-4/5 mx-auto mt-4">
+                <div class="flex mx-auto items-center gap-2">
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                    <hr class="border-violet-200 border-2 w-1/3" />
+                    <hr class="border-violet-700 border-2 w-1/3" />
+                </div>
+            </div>
             <div class="mt-12">
                 <form action="{{ route('pet.create.step.three.post') }}" method="POST" enctype="multipart/form-data">
                     @csrf

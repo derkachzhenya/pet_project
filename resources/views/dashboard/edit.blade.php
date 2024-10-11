@@ -1,319 +1,388 @@
 @extends('main.index')
 @section('main')
-    <div class="w-5/6 mx-auto min-h-screen">
-        <div class="container md:flex px-4 py-8">
-            <div class="">
-                <div class="grid gap-4">
-                    <div class="w-2/3 md:w-full mx-auto">
-                        <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt=""
-                            onclick="openModal(this.src)">
-                    </div>
-                    <div class="grid grid-cols-5 gap-4 w-2/3 md:w-full mx-auto">
-                        @foreach (['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg'] as $image)
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/{{ $image }}"
-                                    alt="" onclick="openModal(this.src)">
+    <form action="{{ route('dashboard.update', $pet) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="w-5/6 mx-auto min-h-screen">
+            <div class="container md:flex px-4 py-8">
+                <div class="">
+                    <div class="grid gap-4">
+                        <div class="w-2/3 md:w-full mx-auto">
+                            <img class="h-auto max-w-full rounded-lg cursor-pointer"
+                                src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt=""
+                                onclick="openModal(this.src)">
+                        </div>
+                        <div class="grid grid-cols-5 gap-4 w-2/3 md:w-full mx-auto">
+                            @foreach (['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg'] as $image)
+                                <div>
+                                    <img class="h-auto max-w-full rounded-lg cursor-pointer"
+                                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/{{ $image }}"
+                                        alt="" onclick="openModal(this.src)">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="relative w-full mt-8">
+                            <label for="description"
+                                class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3 z-10 px-1">
+                                Додаткова інформація<span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <textarea id="description" name="description" maxlength="300" style="height: 140px;"
+                                    class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    oninput="updateCounter('descriptionCounter')">{{ old('description', $pet->description ?? '') }}</textarea>
+                                <div id="descriptionCounter"
+                                    class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
+                                    {{ strlen(old('description', $pet->description ?? '')) }}/300
+                                </div>
+                                @error('description')
+                                    <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                                @enderror
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                    <div class="relative w-full mt-8">
-                        <label for="description"
-                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3 z-10 px-1">
-                            Додаткова інформація<span class="text-red-500">*</span>
+                </div>
+                <div class="w-full mdw-3/4 mx-auto mt-8 md:mt-0 md:mx-0">
+                    <div class="relative w-full md:ml-5 mt-1">
+                        <label for="title"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3 px-1 z-10">
+                            Назва оголошення<span class="text-red-500">*</span>
                         </label>
                         <div class="relative">
-                            <textarea id="description" name="description" maxlength="300" style="height: 140px;"
-                                class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                oninput="updateCounter('descriptionCounter')">{{ old('description', $pet->description ?? '') }}</textarea>
-                            <div id="descriptionCounter"
+                            <textarea id="title" maxlength="50" name="title"
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-16 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                oninput="updateCounter('titleCounter')">{{ old('title', $pet->title ?? '') }}</textarea>
+                            <div id="titleCounter"
                                 class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
-                                {{ strlen(old('description', $pet->description ?? '')) }}/300
+                                {{ strlen(old('title', $pet->title ?? '')) }}/50
                             </div>
-                            @error('description')
-                                <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        </div>
+                        @error('title')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="relative w-full md:mt-8 mt-4 md:ml-5">
+                        <label for="price"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Ціна<span
+                                class="text-red-500">*</span></label>
+                        <input id="price" name="price" value="{{ old('price', $pet->price) }}"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                     focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                      dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        @error('price')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
+
+                        <div class="flex items-center mb-4 mt-3">
+                            <input id="default-checkbox" type="checkbox" name="checkbox" value="1"
+                                {{ old('checkbox') ? 'checked' : '' }}
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-checkbox"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Безкоштовно</label>
+                        </div>
+                    </div>
+
+                    <p class="md:ml-5 mt-10 font-semibold">Характеристики</p>
+
+                    <div class="relative w-full mt-5 md:ml-5">
+                        <label for="category"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">
+                            Вид тварин<span class="text-red-500">*</span>
+                        </label>
+                        <select id="category" name="category_id"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+         focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" {{ old('category_id', $pet->category_id) ? '' : 'selected' }} disabled>
+                                Оберіть тварину</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id', $pet->category_id) == $category->id ? 'selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="relative w-full mt-6 md:ml-5">
+                        <label for="categoryvariety"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Різновид<span
+                                class="text-red-500">*</span></label>
+                        <select id="categoryvariety" name="categoryvariety_id"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value=""
+                                {{ old('categoryvariety_id', $pet->categoryvariety_id) ? '' : 'selected' }} disabled>
+                                Оберіть
+                                породу</option>
+                            @foreach ($categoryvarieties as $categoryvariety)
+                                <option value="{{ $categoryvariety->id }}"
+                                    {{ old('categoryvariety_id', $pet->categoryvariety_id) == $categoryvariety->id ? 'selected' : '' }}>
+                                    {{ $categoryvariety->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('categoryvariety_id')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <p class="mt-5 md:ml-5">Стать<span class="text-red-500">*</span></p>
+                    <div class="md:flex md:justify-between md:ml-5 md:w-2/3">
+                        <div class="flex items-center mb-4 mt-3">
+                            <input id="default-radio-1" type="radio" value="Дівчинка" name="gender"
+                                {{ old('gender', $pet->gender) == 'Дівчинка' ? 'checked' : '' }}
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-1"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Дівчинка</label>
+                        </div>
+
+                        <div class="flex items-center mb-4 mt-3">
+                            <input id="default-radio-2" type="radio" value="Хлопчик" name="gender"
+                                {{ old('gender', $pet->gender) == 'Хлопчик' ? 'checked' : '' }}
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-2"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Хлопчик</label>
+                        </div>
+
+                        <div class="flex items-center mb-1">
+                            <input id="default-radio-3" type="radio" value="Невідомо" name="gender"
+                                {{ old('gender', $pet->gender) == 'Невідомо' ? 'checked' : '' }}
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-3"
+                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Невідомо</label>
+                        </div>
+                    </div>
+
+
+                    <div class="flex w-full gap-3 md:ml-5">
+                        <div class="relative w-full mt-4">
+                            <label for="age"
+                                class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">
+                                Вік<span class="text-red-500">*</span>
+                            </label>
+                            <input type="number" id="age" name="age" value="{{ old('age', $pet->age) }}"
+                                min="0" max="100"
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                                focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 
+                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required />
+                            @error('age')
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="w-2/5 mt-4">
+                            <label for="categoryage" class="sr-only">Період</label>
+                            <select id="categoryage" name="categoryage_id"
+                                class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                                focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 
+                                dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="" {{ old('categoryage_id', $pet->categoryage_id) ? '' : 'selected' }}
+                                    disabled>Період</option>
+                                @foreach ($categoryages as $categoryage)
+                                    <option value="{{ $categoryage->id }}"
+                                        {{ old('categoryage_id', $pet->categoryage_id) == $categoryage->id ? 'selected' : '' }}>
+                                        {{ $categoryage->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('categoryage_id')
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="w-3/4 mx-auto md:mx-0">
-                <div class="relative w-full ml-5 mt-1">
-                    <label for="title"
-                        class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3 px-1 z-10">
-                        Назва оголошення<span class="text-red-500">*</span>
-                    </label>
-                    <div class="relative">
-                        <textarea id="title" maxlength="50" name="title"
-                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-16 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            oninput="updateCounter('titleCounter')">{{ old('title', $pet->title ?? '') }}</textarea>
-                        <div id="titleCounter"
-                            class="absolute bottom-2 right-2 text-xs text-gray-500 dark:text-gray-400 pointer-events-none">
-                            {{ strlen(old('title', $pet->title ?? '')) }}/50
-                        </div>
+
+                    <div class="relative w-full mt-8 md:ml-5">
+                        <label for="categorycolor"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">
+                            Забарвлення<span class="text-red-500">*</span>
+                        </label>
+                        <select id="categorycolor" name="categorycolor_id"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" {{ old('categorycolor_id', $pet->categorycolor_id) ? '' : 'selected' }}
+                                disabled>Оберіть
+                                забарвлення</option>
+                            @foreach ($categorycolors as $categorycolor)
+                                <option value="{{ $categorycolor->id }}"
+                                    {{ old('categorycolor_id', $pet->categorycolor_id) == $categorycolor->id ? 'selected' : '' }}>
+                                    {{ $categorycolor->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('categorycolor_id')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
-                    @error('title')
+
+                    <p class="mt-5 md:ml-5">Походження тварини<span class="text-red-500">*</span></p>
+
+                    <div class="flex items-center mb-4 mt-3 md:ml-5">
+                        <input id="default-radio-1" type="radio" value="Представник притулку" name="hiking"
+                            {{ old('hiking', $pet->hiking) == 'Представник притулку' ? 'checked' : '' }}
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-radio-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Я
+                            представник притулку</label>
+                    </div>
+
+                    <div class="flex items-center mb-4 mt-3 md:ml-5">
+                        <input id="default-radio-2" type="radio" value="Власник розплідника" name="hiking"
+                            {{ old('hiking', $pet->hiking) == 'Власник розплідника' ? 'checked' : '' }}
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Я
+                            власник розплідника</label>
+                    </div>
+
+                    <div class="flex items-center md:ml-5">
+                        <input id="default-radio-3" type="radio" value="Приватний власник" name="hiking"
+                            {{ old('hiking', $pet->hiking) == 'Приватний власник' ? 'checked' : '' }}
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-radio-3" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Я
+                            приватна особа</label>
+                    </div>
+
+                    @error('hiking')
                         <div class="alert alert-danger text-red-600">{{ $message }}</div>
                     @enderror
-                </div>
-                <div class="md:flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                            </path>
-                        </svg>
-                        <p class="pl-1">Номер телефону</p>
-                    </div>
-                    <div class="flex mt-2 md:mt-0">
-                        <p class="pr-1">{{ $pet->user->phone }}</p>
-                        <img src="{{ asset('telegram.png') }}" class="h-5 w-5 my-auto" alt="">
-                    </div>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
 
-                <p class="ml-5 mt-10 font-semibold">Характеристики</p>
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <img class="h-4 w-4 my-auto" src="{{ asset('vectors/paw.png') }}" alt="paw">
-                        <p class="pl-1">Вид</p>
+                    <div class="relative w-full mt-8 md:ml-5">
+                        <label for="categorylocal"
+                            class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">
+                            Локація<span class="text-red-500">*</span>
+                        </label>
+                        <select id="categorylocal" name="categorylocal_id"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" {{ old('categorylocal_id', $pet->categorylocal_id) ? '' : 'selected' }}
+                                disabled>Оберіть локацію</option>
+                            @foreach ($categorylocals as $categoryloc)
+                                <option value="{{ $categoryloc->id }}"
+                                    {{ old('categorylocal_id', $pet->categorylocal_id) == $categoryloc->id ? 'selected' : '' }}>
+                                    {{ $categoryloc->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('categorylocal_id')
+                            <div class="alert alert-danger text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <p>Собака</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600 my-auto" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                            <line x1="7" y1="7" x2="7.01" y2="7" />
-                        </svg>
-                        <p class="pl-1">Різновид</p>
-                    </div>
-                    <p class="pr-1">{{ $pet->categoryvariety->title }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <img class="h-4 w-3 my-auto" src="{{ asset('vectors/vector.png') }}" alt="vector">
-                        <p class="pl-1">Стать</p>
-                    </div>
-                    <p class="pr-1">{{ $pet->gender }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600 my-auto" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="mr-2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                        <p class="pl-1">Вік</p>
-                    </div>
-                    <p class="pr-1">{{ $pet->age }} {{ $pet->categoryage->title }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                        </svg>
-                        <p class="pl-1">Забарвлення</p>
-                    </div>
-                    <p class="pr-1">{{ $pet->categorycolor->title }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="mr-2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <p class="pl-1">Локація</p>
-                    </div>
-                    <p class="pr-1">{{ $pet->categorylocal->title }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-                <div class="md:flex ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <div class="flex">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
-                            <p class="pl-1">Походження</p>
-                        </div>
-                    </div>
-                    <p class="pr-1 mt-2 md:mt-0">{{ $pet->hiking }}</p>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
 
-                <div class="ml-5 md:w-96 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                        <p class="pl-1">Здоров'я</p>
-                    </div>
-                    <div class="md:flex mt-3">
-                        @if ($pet->sterilization == 1)
-                            <div class="mr-2  md:mt-0">
-                                <label for="sterilization"
-                                    class="flex items-center justify-center w-full px-3 h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Стерилізація</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
 
-                        @if ($pet->vaccination == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="vacination"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Вакцинація</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
+                    <p class="mt-5 md:ml-5">Здоров'я</p>
+                    <ul class="grid w-full gap-2 mt-3 md:grid-cols-3 md:ml-5">
+                        <li>
+                            <input type="checkbox" id="chip" name="chip" value="1" class="hidden peer" {{ old('chip', $pet->chip) == 1 ? 'checked' : '' }}>
+                            <label for="chip"
+                                class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('chip', $pet->chip) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Чіп</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="sterilization" name="sterilization" value="1" class="hidden peer" {{ old('sterilization', $pet->sterilization) == 1 ? 'checked' : '' }}>
+                            <label for="sterilization"
+                                class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('sterilization', $pet->sterilization) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Стерилізація</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="vacination" name="vaccination" value="1" class="hidden peer" {{ old('vaccination', $pet->vaccination) == 1 ? 'checked' : '' }}>
+                            <label for="vacination"
+                                class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('vaccination', $pet->vaccination) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Вакцинація</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li class="w-full">
+                            <input type="checkbox" id="option" name="processing" value="1" class="hidden peer" {{ old('processing', $pet->processing) == 1 ? 'checked' : '' }}>
+                            <label for="option"
+                                class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('processing', $pet->processing) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center break-words">
+                                    Обробка від паразитів
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                    
+                    <p class="mt-5 md:ml-5">Документи</p>
+                    <ul class="grid w-full gap-2 mt-3 md:grid-cols-3 md:ml-5">
+                        <li>
+                            <input type="checkbox" id="pasport" name="vet_pasport" value="1" class="hidden peer" {{ old('vet_pasport', $pet->vet_pasport) == 1 ? 'checked' : '' }}>
+                            <label for="pasport"
+                                class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('vet_pasport', $pet->vet_pasport) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Вет паспорт</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="pedigree" name="pedigree" value="1" class="hidden peer" {{ old('pedigree', $pet->pedigree) == 1 ? 'checked' : '' }}>
+                            <label for="pedigree"
+                                class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('pedigree', $pet->pedigree) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Родовід</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="FCI/KCY" name="fci" value="1" class="hidden peer" {{ old('fci', $pet->fci) == 1 ? 'checked' : '' }}>
+                            <label for="FCI/KCY"
+                                class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('fci', $pet->fci) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">FCI/KCY</div>
+                                </div>
+                            </label>
+                        </li>
+                        <li class="w-full">
+                            <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer" {{ old('metrics', $pet->metrics) == 1 ? 'checked' : '' }}>
+                            <label for="metrics"
+                                class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('metrics', $pet->metrics) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center break-words">
+                                    Метрика цуценяти
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                    
 
-                        @if ($pet->chip == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="chip"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Чіп</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-
-                        @if ($pet->processing == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="option"
-                                    class="flex items-center justify-center w-full px-3 min-w-max bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center break-words">
-                                        Обробка від паразитів
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-                    </div>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-
-                <div class=" ml-5 mt-2 justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <line x1="16" y1="13" x2="8" y2="13" />
-                            <line x1="16" y1="17" x2="8" y2="17" />
-                            <polyline points="10 9 9 9 8 9" />
-                        </svg>
-                        <p class="pl-1">Документи</p>
-                    </div>
-                    <div class="md:flex mt-3">
-                        @if ($pet->vet_pasport == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="pasport"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Вет паспорт</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-
-                        @if ($pet->pedigree == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="pedigree"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Родовід</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-
-                        @if ($pet->fci == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="FCI/KCY"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">FCI/KCY</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-
-                        @if ($pet->metrics == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="metrics"
-                                    class="flex items-center justify-center w-full min-w-max px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center break-words">
-                                        Метрика цуценяти
-                                    </div>
-                                </label>
-                            </div>
-                        @else
-                        @endif
-                    </div>
-                </div>
-                <hr class="ml-5 mt-3 mb-3">
-
-                <div class="flex pl-24">
-                    <a href="{{ route('pet.create.step.three') }}"
-                        class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
+                    <div class="md:flex md:pl-24 mt-12 md:mt-0">
+                        <a href="#"
+                            class="text-violet-800 mt-6 ml-16 md:ml-0 bg-white focus:outline-none focus:ring-4
                                focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
                                border-violet-800 w-full text-center">Деактивувати</a>
-                    <a href="{{ route('dashboard.edit', $pet->id) }}"
-                        class="text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
-                               focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 mb-2
-                               w-full text-center">Зберегти</a>
+                        <button type="submit"
+                            class="text-white mt-6 ml-3 md:ml-0 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
+                               focus:ring-gray-300 font-medium rounded-full text-sm px-16 py-2.5 mb-2
+                               w-full text-center">Зберегти
+                            </buttom>
+                    </div>
+
                 </div>
-
             </div>
+    </form>
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="relative">
+            <img id="modalImage" src="" alt="" class="max-h-screen max-w-screen-lg">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
-
-        <!-- Modal -->
-        <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-            <div class="relative">
-                <img id="modalImage" src="" alt="" class="max-h-screen max-w-screen-lg">
-                <button onclick="closeModal()"
-                    class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+    </div>
 
     </div>
 
@@ -334,5 +403,19 @@
             const currentLength = textarea.value.length;
             document.getElementById(counterId).innerText = `${currentLength}/${maxLength}`;
         }
+    </script>
+
+    <script>
+        document.getElementById('default-checkbox').addEventListener('change', function() {
+            const priceInput = document.getElementById('price');
+
+            if (this.checked) {
+                priceInput.value = 0; // Устанавливаем значение "0"
+                priceInput.setAttribute('readonly', true); // Блокируем редактирование
+            } else {
+                priceInput.value = ''; // Очищаем поле
+                priceInput.removeAttribute('readonly'); // Разблокируем редактирование
+            }
+        });
     </script>
 @endsection
