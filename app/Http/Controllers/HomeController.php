@@ -12,7 +12,6 @@ class HomeController extends Controller
     public function index()
     {
       
-      
         $categories = Category::all();
         $categorylocals = Categorylocal::all();
         $pets = Pet::with('user')->latest()->get();

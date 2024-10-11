@@ -2,7 +2,7 @@
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="{{ route('home') }}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="{{ asset('logoOne.png') }}" class="h-8" alt="logoWhite" />
+                <img src="{{ asset('logoWhite.png') }}" class="h-8" alt="logoWhite" />
 
             </a>
             <div>
