@@ -20,13 +20,19 @@
                     </div>
                     <div class="mb-12 mt-8 mx-auto md:mx-0">
                         <p class="font-semibold">Додаткова інформація</p>
-                        <p class="mt-2">dgbfgbbfdvvvvvvvvvvvvvvvvv</p>
+                        <p class="mt-2">{{ $pet->description }}</p>
                     </div>
                 </div>
             </div>
             <div class="w-3/4 mx-auto md:mx-0">
                 <p class="ml-5 text-3xl font-semibold">{{ $pet->title }}</p>
-                <p class="ml-5 mt-3 text-2xl font-semibold">₴ {{ $pet->price }}</p>
+                <p class="ml-5 mt-3 text-2xl font-semibold"> 
+                    @if ($pet->price == 0)
+                        <span>Безкоштовно</span>
+                    @else
+                        <span>₴ {{ $pet->price }} </span>
+                    @endif
+                </p>
                 <p class="ml-5 mt-10 font-semibold">Контакти</p>
                 <div class="flex ml-5 mt-2 justify-between">
                     <div class="flex">
@@ -64,7 +70,7 @@
                         <img class="h-4 w-4 my-auto" src="{{ asset('vectors/paw.png') }}" alt="paw">
                         <p class="pl-1">Вид</p>
                     </div>
-                    <p>Собака</p>
+                    <p>{{ $pet->category->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -77,7 +83,7 @@
                         </svg>
                         <p class="pl-1">Різновид</p>
                     </div>
-                    <p class="pr-1">Невідомо</p>
+                    <p class="pr-1">{{ $pet->categoryvariety->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -85,7 +91,7 @@
                         <img class="h-4 w-3 my-auto" src="{{ asset('vectors/vector.png') }}" alt="vector">
                         <p class="pl-1">Стать</p>
                     </div>
-                    <p class="pr-1">Хлопчик</p>
+                    <p class="pr-1">{{ $pet->gender }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -100,7 +106,7 @@
                         </svg>
                         <p class="pl-1">Вік</p>
                     </div>
-                    <p class="pr-1">до 6 місяців</p>
+                    <p class="pr-1">{{ $pet->age }} {{ $pet->categoryage->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -112,7 +118,7 @@
                         </svg>
                         <p class="pl-1">Забарвлення</p>
                     </div>
-                    <p class="pr-1">Руде</p>
+                    <p class="pr-1">{{ $pet->categorycolor->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="flex ml-5 mt-2 justify-between">
@@ -125,7 +131,7 @@
                         </svg>
                         <p class="pl-1">Локація</p>
                     </div>
-                    <p class="pr-1">Київ</p>
+                    <p class="pr-1">{{ $pet->categorylocal->title }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
                 <div class="md:flex ml-5 mt-2 justify-between">
@@ -140,11 +146,11 @@
                             <p class="pl-1">Походження</p>
                         </div>
                     </div>
-                    <p class="pr-1 mt-2 md:mt-0">Приватний власник</p>
+                    <p class="pr-1 mt-2 md:mt-0">{{ $pet->hiking }}</p>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
 
-                <div class=" ml-5 mt-2 justify-between">
+                <div class="ml-5 md:w-96 mt-2 justify-between">
                     <div class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-600" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -154,6 +160,7 @@
                         <p class="pl-1">Здоров'я</p>
                     </div>
                     <div class="md:flex mt-3">
+                        @if ($pet->sterilization == 1)
                         <div class="mr-2  md:mt-0">
                             <label for="sterilization"
                                 class="flex items-center justify-center w-full px-3 h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -162,6 +169,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->vaccination == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="vacination"
                                 class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -170,6 +182,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->chip == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="chip"
                                 class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -178,6 +195,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->processing == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="option"
                                 class="flex items-center justify-center w-full px-3 min-w-max bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -186,6 +208,9 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
                     </div>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
@@ -204,6 +229,7 @@
                         <p class="pl-1">Документи</p>
                     </div>
                     <div class="md:flex mt-3">
+                        @if ($pet->vet_pasport == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="pasport"
                                 class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -212,6 +238,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->pedigree == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="pedigree"
                                 class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -220,6 +251,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->fci == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="FCI/KCY"
                                 class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -228,6 +264,11 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
+
+                        @if ($pet->metrics == 1)
                         <div class="mr-2 mt-2 md:mt-0">
                             <label for="metrics"
                                 class="flex items-center justify-center w-full min-w-max px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -236,6 +277,9 @@
                                 </div>
                             </label>
                         </div>
+                        @else
+                        
+                        @endif
                     </div>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">

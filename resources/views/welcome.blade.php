@@ -34,8 +34,8 @@
                     </form>
                     <div class="pt-7">
                         <button type="button"
-                            class="text-white bg-violet-700 hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium 
-                    rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700
+                            class="text-white bg-violet-600 hover:bg-violet-900 focus:outline-none focus:ring-4 focus:ring-violet-300 font-medium 
+                    rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-violet-600 dark:hover:bg-violet-700
                      dark:focus:ring-blue-800 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -106,7 +106,7 @@
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
-                            Кам'янець подільский
+                            {{ $pet->categorylocal->title }}
                         </p>
                         <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
@@ -116,7 +116,7 @@
                                 <line x1="12" y1="8" x2="12" y2="21"></line>
                                 <line x1="8" y1="16" x2="16" y2="16"></line>
                             </svg>
-                            Хлопчик
+                            {{ $pet->gender }}
                         </p>
                         <p class="mb-3 text-gray-700 dark:text-gray-400 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
@@ -127,10 +127,13 @@
                                 <line x1="8" y1="2" x2="8" y2="6" />
                                 <line x1="3" y1="10" x2="21" y2="10" />
                             </svg>
-                            3,5 роки
-                        </p>
+                            {{ $pet->age }} {{ $pet->categoryage->title }}
                         <p class="font-bold text-right text-xl">
-                            ₴ {{ $pet->price }}
+                            @if ($pet->price == 0)
+                                <span>Безкоштовно</span>
+                            @else
+                                <span>₴ {{ $pet->price }} </span>
+                            @endif
                         </p>
                     </div>
             </div>

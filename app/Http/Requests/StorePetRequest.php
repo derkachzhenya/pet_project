@@ -24,16 +24,25 @@ class StorePetRequest extends FormRequest
         return [
             'title' => 'required|string|max:50',
             'price' => 'required|numeric|min:0|decimal:0,2',
+            'category_id' => 'required|exists:categories,id', 
+            'categorylocal_id' => 'required', 
+            'hiking' => 'required|in:Представник притулку,Власник розплідника,Приватний власник',
+ 
+
         ];
     }
 
     public function messages(): array
-{
-    return [
-        'title.required' => 'Ви не ввели дані',
-        'title.string' => 'Поле має бути рядком',
-        'price.required' => 'Ви не ввели дані',
-        'price.numeric' => 'Поле ціни має бути числом',
-    ];
-}
+    {
+        return [
+            'title.required' => 'Ви не ввели дані',
+            'title.string' => 'Поле має бути рядком',
+            'category_id.required' => 'Категорія не вибрана',
+            'price.required' => 'Ви не ввели дані',
+            'price.numeric' => 'Поле ціни має бути числом',
+            'categorylocal_id.required' => 'Локація не вибрана',
+            'hiking.required' => 'Ви не обрали походження тварини',
+            
+        ];
+    }
 }

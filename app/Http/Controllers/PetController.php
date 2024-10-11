@@ -3,21 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\Category;
+use App\Models\Categoryage;
 use Illuminate\Http\Request;
+use App\Models\Categorycolor;
+use App\Models\Categorylocal;
+use App\Models\Categoryvariety;
 use App\Http\Requests\StorePetRequest;
 use App\Http\Requests\UpdatePetRequest;
+use App\Http\Requests\StoreTwoPetRequest;
+use App\Http\Requests\AddPetStepThreeRequest;
 
 class PetController extends Controller
 {
 
     public function index()
     {
-        return view('pets.create-step-one');
+        $categories = Category::all();  // Получаем все категории из базы данных
+        $categorylocals = Categorylocal::all();
+        return view('pets.create-step-one', compact('categories', 'categorylocals'));
     }
 
     public function createStepOne(Request $request)
     {
+
         $pet = $request->session()->get('pet');
+
         return view('pets.create-step-one', compact('pet'));
     }
 
@@ -25,8 +36,10 @@ class PetController extends Controller
     {
         $data = $request->validated();
         $pet = $request->user()->pets()->create($data);
+        $pet->hiking = $data['hiking'];
 
-        // Сохраняем pet в сессию
+        $pet->save();
+
         $request->session()->put('pet', $pet);
 
         return redirect()->route('pet.create.step.two');
@@ -35,27 +48,79 @@ class PetController extends Controller
     public function createStepTwo(Request $request)
     {
         $pet = $request->session()->get('pet');
-        return view('pets.create-step-two', compact('pet'));
+        $categoryvarieties = Categoryvariety::all();
+        $categoryages = Categoryage::all();
+        return view('pets.create-step-two', compact('pet', 'categoryvarieties', 'categoryages'));
     }
 
-    public function postCreateStepTwo(Request $request)
+    public function postCreateStepTwo(StoreTwoPetRequest $request)
     {
+        $validatedData = $request->validated();
+
+        $pet = $request->session()->get('pet');
+    
+
+        if (!$pet) {
+            return redirect()->route('pet.create.step.one')
+                ->with('error', 'Pet information not found. Please start from the beginning.');
+        }
+
+
+        $pet->categoryvariety_id = $validatedData['categoryvariety_id'];
+        $pet->age = $validatedData['age'];
+        $pet->categoryage_id = $validatedData['categoryage_id'];
+        $pet->gender = $validatedData['gender'];
+
+        $pet->sterilization = $validatedData['sterilization'] ?? false;
+        $pet->vaccination = $validatedData['vaccination'] ?? false;
+        $pet->chip = $validatedData['chip'] ?? false;
+        $pet->processing = $validatedData['processing'] ?? false;
+
+        $pet->vet_pasport = $validatedData['vet_pasport'] ?? false;
+        $pet->pedigree = $validatedData['pedigree'] ?? false;
+        $pet->fci = $validatedData['fci'] ?? false;
+        $pet->metrics = $validatedData['metrics'] ?? false;
+
+
+        $request->session()->put('pet', $pet);
+
         return redirect()->route('pet.create.step.three');
     }
+
+
 
     public function createStepThree(Request $request)
     {
         $pet = $request->session()->get('pet');
-        return view('pets.create-step-three', compact('pet'));
+        $categorycolors = Categorycolor::all();
+        return view('pets.create-step-three', compact('pet', 'categorycolors'));
     }
 
-    public function postCreateStepThree(Request $request)
+    public function postCreateStepThree(AddPetStepThreeRequest $request)
     {
+        $validatedData = $request->validated();
+
+        $pet = $request->session()->get('pet');
+    
+
+        if (!$pet) {
+
+            return redirect()->route('pet.create.step.one')->with('error', 'Информация о питомце не найдена. Пожалуйста, начните сначала.');
+        }
+  
+        $pet->description = $validatedData['description'];
+        $pet->categorycolor_id = $validatedData['categorycolor_id'];
+        $pet->save();
+
+
+        $request->session()->put('pet', $pet);
+
         return redirect()->route('pet.create.step.four');
     }
 
     public function createStepFour(Request $request)
     {
+
         $pet = $request->session()->get('pet');
         return view('pets.create-step-four', compact('pet'));
     }

@@ -29,7 +29,7 @@
 
         <!-- Email Address -->
         <div class="mt-4 relative">
-            <x-input-label for="surname">
+            <x-input-label for="email">
                 {{ __('Електронна пошта') }}<span class="text-red-500">*</span>
             </x-input-label>
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
@@ -37,9 +37,19 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+         <!-- phone -->
+         <div class="mt-4">
+            <x-input-label for="phone">
+                {{ __('Телефон') }}<span class="text-red-500">*</span>
+            </x-input-label>
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
+                placeholder="Введіть номер телефону" :value="old('phone')" required autofocus autocomplete="phone" />
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
+
         <!-- Location -->
         <div class="mt-4">
-            <x-input-label for="surname">
+            <x-input-label for="location">
                 {{ __('Локація') }}<span class="text-red-500">*</span>
             </x-input-label>
             <select id="location" class="block mt-1 w-full rounded-md border-gray-300" type="text" name="location"
@@ -53,7 +63,7 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="surname">
+            <x-input-label for="password">
                 {{ __('Пароль') }}<span class="text-red-500">*</span>
             </x-input-label>
 
@@ -65,7 +75,7 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="surname">
+            <x-input-label for="password_confirmation">
                 {{ __('Повторіть пароль') }}<span class="text-red-500">*</span>
             </x-input-label>
 
