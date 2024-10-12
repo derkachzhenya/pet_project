@@ -22,8 +22,11 @@ class AddPetStepThreeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'categorycolor_id' => 'required', 
-            'description' => 'required|string|max:300',
+            'categorycolor_id' => 'required',
+            'description' => 'required',
+            'main_image' => 'required|file|mimes:jpeg,png,jpg|max:10240',
+            'image_one' => 'file|mimes:jpeg,png,jpg|max:10240',
+           
         ];
     }
 

@@ -6,17 +6,24 @@
                 <div class="grid gap-4">
                     <div class="w-2/3 md:w-full mx-auto">
                         <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt=""
+                            src="{{ asset('storage/' . $pet->main_image)}}" alt="Main pet image"
                             onclick="openModal(this.src)">
                     </div>
-                    <div class="grid grid-cols-5 gap-4 w-2/3 md:w-full mx-auto">
-                        @foreach (['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-4.jpg', 'image-5.jpg'] as $image)
+                    <div class="grid grid-cols-4 gap-4 w-2/3 md:w-full mx-auto mt-4">
+                        @php
+                        // Массив с ключами полей, где хранятся изображения
+                        $images = ['image_one', 'image_two', 'image_three', 'image_four']; 
+                    @endphp
+                    
+                    @foreach ($images as $imageField)
+                        @if(!empty($pet->$imageField))
                             <div>
-                                <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                                    src="https://flowbite.s3.amazonaws.com/docs/gallery/square/{{ $image }}"
-                                    alt="" onclick="openModal(this.src)">
+                                <img class="h-28 max-w-full rounded-lg cursor-pointer"
+                                     src="{{ asset('storage/' . $pet->$imageField) }}"
+                                     alt="Pet image {{ $loop->iteration }}" onclick="openModal(this.src)">
                             </div>
-                        @endforeach
+                        @endif
+                    @endforeach
                     </div>
                     <div class="mb-12 mt-8 mx-auto md:mx-0">
                         <p class="font-semibold">Додаткова інформація</p>

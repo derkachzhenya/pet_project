@@ -110,6 +110,31 @@ class PetController extends Controller
   
         $pet->description = $validatedData['description'];
         $pet->categorycolor_id = $validatedData['categorycolor_id'];
+        if ($request->hasFile('main_image')) {
+            $path = $request->file('main_image')->store('images', 'public');
+            $pet->main_image = $path;
+        }
+
+        if ($request->hasFile('image_one')) {
+            $path = $request->file('image_one')->store('images', 'public');
+            $pet->image_one = $path;
+        }
+
+        if ($request->hasFile('image_two')) {
+            $path = $request->file('image_two')->store('images', 'public');
+            $pet->image_two = $path;
+        }
+
+        if ($request->hasFile('image_three')) {
+            $path = $request->file('image_three')->store('images', 'public');
+            $pet->image_three = $path;
+        }
+
+        if ($request->hasFile('image_four')) {
+            $path = $request->file('image_four')->store('images', 'public');
+            $pet->image_four = $path;
+        }
+        
         $pet->save();
 
 

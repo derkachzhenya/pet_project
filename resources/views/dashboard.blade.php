@@ -97,7 +97,7 @@
                                 <div x-show="showAll || {{ $index }} < 4"
                                     class="flex-shrink-0 w-64 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 md:mb-0">
                                     <a href="{{ route('dashboard.show', $pet->id) }}">
-                                        <img class="rounded-t-lg h-48 w-full object-cover" src="main/cat2.png"
+                                        <img class="rounded-t-lg h-48 w-full object-cover" src="{{ asset('storage/' . $pet->main_image)}}"
                                             alt="" />
                                     </a>
                                     <div class="p-5">

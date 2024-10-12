@@ -16,6 +16,12 @@ return new class extends Migration {
             $table->string('title');
             $table->decimal('price');
             $table->integer('age')->default(0);
+            $table->string('main_image')->nullable();
+            $table->string('image_one')->nullable();
+            $table->string('image_two')->nullable();
+            $table->string('image_three')->nullable();
+            $table->string('image_four')->nullable();
+            
 
             $table->boolean('sterilization')->default(0);
             $table->boolean('vaccination')->default(0);

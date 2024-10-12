@@ -6,14 +6,12 @@
 
 
             <div class="flex">
-                <select id="countries"
-                    class="border border-gray-300 text-gray-900 text-sm rounded-lg  mb-5 w-48 focus:ring-blue-500
-                         focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Сортувати за</option>
-                    <option value="US">Найновіші</option>
-                    <option value="US">Від дешевих до дорогих</option>
-                    <option value="US">Від дорогих до дешевих</option>
+                <select id="sortSelect"
+                    class="border border-gray-300 text-gray-900 text-sm rounded-lg mb-5 w-48 focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected>Сортувати за</option>
+                    <option value="newest">Найновіші</option>
+                    <option value="priceLowToHigh">Від дешевих до дорогих</option>
+                    <option value="priceHighToLow">Від дорогих до дешевих</option>
                 </select>
                 <div class="pl-4 pt-3">
                     <button id="gridView" class="focus:outline-none">
@@ -300,10 +298,11 @@
             <div id="petsContainer" class="w-60 md:w-3/4">
                 <div class="md:grid md:grid-cols-3 md:gap-4 ml-5">
                     @foreach ($pets as $pet)
-                        <div
-                            class="pet-card bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 transition-all duration-300">
+                        <div class="pet-card bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 transition-all duration-300"
+                            data-date-added="{{ $pet->created_at->toISOString() }}">
                             <a href="{{ route('pets.show', $pet->id) }}">
-                                <img class="rounded-t-lg h-48 w-full object-cover" src="main/dog.png" alt="" />
+                                <img class="rounded-t-lg h-48 w-full object-cover"
+                                    src="{{ asset('storage/' . $pet->main_image) }}" alt="" />
                             </a>
                             <div class="">
                                 <a href="{{ route('pets.show', $pet->id) }}">
@@ -340,8 +339,9 @@
                                         <line x1="8" y1="2" x2="8" y2="6" />
                                         <line x1="3" y1="10" x2="21" y2="10" />
                                     </svg>
-                                    {{ $pet->age }} {{ $pet->categoryage->title }}
+                                    {{ $pet->age }} {{ $pet->categoryage->title ?? 'Не указано' }}
                                 </p>
+
                                 <p class="font-bold text-right text-xl">
                                     @if ($pet->price == 0)
                                         <span>Безкоштовно</span>
@@ -368,29 +368,42 @@
 
     </div>
 
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const gridViewBtn = document.getElementById('gridView');
             const listViewBtn = document.getElementById('listView');
             const petsContainer = document.getElementById('petsContainer');
             const petCards = document.querySelectorAll('.pet-card');
+            let currentView = 'grid';
 
             gridViewBtn.addEventListener('click', function(e) {
                 e.preventDefault();
+                setGridView();
+                currentView = 'grid';
+            });
+
+            listViewBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                setListView();
+                currentView = 'list';
+            });
+
+            function setGridView() {
                 petsContainer.firstElementChild.classList.remove('flex', 'flex-col');
                 petsContainer.firstElementChild.classList.add('md:grid', 'md:grid-cols-3', 'md:gap-4');
                 petCards.forEach(card => {
                     card.classList.remove('flex', 'flex-row');
                     card.firstElementChild.classList.remove('flex-row');
                     card.firstElementChild.classList.add('flex-col');
-                    card.querySelector('img').classList.remove('md:rounded-l-lg',
-                        'md:rounded-t-none');
+                    card.querySelector('img').classList.remove('md:rounded-l-lg', 'md:rounded-t-none');
                     card.querySelector('img').classList.add('rounded-t-lg');
+                    card.querySelector('img').style.width = '';
                 });
-            });
+            }
 
-            listViewBtn.addEventListener('click', function(e) {
-                e.preventDefault();
+            function setListView() {
                 petsContainer.firstElementChild.classList.remove('md:grid', 'md:grid-cols-3', 'md:gap-4');
                 petsContainer.firstElementChild.classList.add('flex', 'flex-col');
                 petCards.forEach(card => {
@@ -400,8 +413,58 @@
                     let img = card.querySelector('img');
                     img.classList.remove('rounded-t-lg');
                     img.classList.add('md:rounded-l-lg');
-                    img.style.width = '300px'; // Увеличение ширины до 400px
+                    img.style.width = '300px';
                 });
+            }
+
+            function getPetData() {
+                const petCards = document.querySelectorAll('.pet-card');
+                return Array.from(petCards).map(card => {
+                    const title = card.querySelector('h5').textContent.trim();
+                    const priceEl = card.querySelector('.font-bold');
+                    const price = priceEl.textContent.includes('Безкоштовно') ? 0 : parseFloat(priceEl
+                        .textContent.replace('₴', '').trim());
+                    const dateAdded = new Date(card.dataset.dateAdded);
+
+                    return {
+                        element: card,
+                        title,
+                        price,
+                        dateAdded
+                    };
+                });
+            }
+
+            function sortPets(sortBy) {
+                const container = petsContainer.firstElementChild;
+                const pets = getPetData();
+
+                switch (sortBy) {
+                    case 'newest':
+                        pets.sort((a, b) => b.dateAdded - a.dateAdded);
+                        break;
+                    case 'priceLowToHigh':
+                        pets.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'priceHighToLow':
+                        pets.sort((a, b) => b.price - a.price);
+                        break;
+                    default:
+                        return;
+                }
+
+                container.innerHTML = '';
+                pets.forEach(pet => container.appendChild(pet.element));
+
+                if (currentView === 'grid') {
+                    setGridView();
+                } else {
+                    setListView();
+                }
+            }
+
+            document.getElementById('sortSelect').addEventListener('change', function() {
+                sortPets(this.value);
             });
         });
     </script>

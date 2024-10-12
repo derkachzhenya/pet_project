@@ -99,7 +99,7 @@
             @foreach ($pets->take(4) as $pet)
                 <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('pets.show', $pet->id) }}">
-                        <img class="rounded-t-lg h-48 w-full object-cover" src="main/dog.png" alt="" />
+                        <img class="rounded-t-lg h-48 w-full object-cover" src="{{ asset('storage/' . $pet->main_image)}}" alt="" />
 
                         <div class="p-5">
                             <h5 class="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
@@ -134,7 +134,7 @@
                             <line x1="8" y1="2" x2="8" y2="6" />
                             <line x1="3" y1="10" x2="21" y2="10" />
                         </svg>
-                        {{ $pet->age }} {{ $pet->categoryage->title }}
+                        {{ $pet->age }} {{ $pet->categoryage?->title ?? 'Не указано' }}
                     <p class="font-bold text-right text-xl">
                         @if ($pet->price == 0)
                             <span>Безкоштовно</span>
