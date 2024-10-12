@@ -16,11 +16,11 @@ return new class extends Migration {
             $table->string('title');
             $table->decimal('price');
             $table->integer('age')->default(0);
-            $table->string('main_image')->nullable();
-            $table->string('image_one')->nullable();
-            $table->string('image_two')->nullable();
-            $table->string('image_three')->nullable();
-            $table->string('image_four')->nullable();
+            $table->string('main_image')->default(0);
+            $table->string('image_one')->default(0);
+            $table->string('image_two')->default(0);
+            $table->string('image_three')->default(0);
+            $table->string('image_four')->default(0);
             
 
             $table->boolean('sterilization')->default(0);
