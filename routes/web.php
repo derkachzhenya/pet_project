@@ -12,6 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/pets/{pet}', [HomeController::class, 'show'])->name('pets.show');
 Route::get('/pets/{pet}/edit', [HomeController::class, 'edit'])->name('pets.edit');
 
+Route::get('/pets', [PetController::class, 'indexAll'])->name('pets.index');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {

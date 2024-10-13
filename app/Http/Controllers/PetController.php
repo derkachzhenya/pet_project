@@ -156,6 +156,37 @@ class PetController extends Controller
         return redirect()->route('dashboard');
     }
 
+
+
+    public function indexAll(Request $request)
+    {
+        $query = Pet::query();
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->filled('categorylocal_id')) {
+            $query->where('categorylocal_id', $request->categorylocal_id);
+        }
+
+        // Добавьте дополнительные фильтры по необходимости, например:
+        if ($request->filled('categoryage_id')) {
+            $query->where('categoryage_id', $request->categoryage_id);
+        }
+
+        if ($request->filled('gender')) {
+            $query->where('gender', $request->gender);
+        }
+
+        $pets = $query->latest()->paginate(12);
+        $categories = Category::all();
+        $categorylocals = Categorylocal::all();
+        $categoryages = Categoryage::all(); // Добавьте это, если хотите фильтровать по возрасту
+
+        return view('pets.index', compact('pets', 'categories', 'categorylocals', 'categoryages'));
+    }
+
     public function create()
     {
         //

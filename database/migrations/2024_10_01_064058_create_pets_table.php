@@ -34,6 +34,7 @@ return new class extends Migration {
             $table->boolean('metrics')->default(0);
             $table->string('hiking')->default('Не задано');
             $table->string('gender')->default('Не задано');
+            $table->string('status')->default('active');
 
             $table->text('description')->default('No description'); // Provide default value
             $table->timestamps();

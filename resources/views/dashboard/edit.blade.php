@@ -9,24 +9,24 @@
                     <div class="grid gap-4">
                         <div class="w-2/3 md:w-full mx-auto">
                             <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                                src="{{ asset('storage/' . $pet->main_image)}}" alt="Main pet image"
+                                src="{{ asset('storage/' . $pet->main_image) }}" alt="Main pet image"
                                 onclick="openModal(this.src)">
                         </div>
                         <div class="grid grid-cols-4 gap-4 w-2/3 md:w-full mx-auto mt-4">
                             @php
-                            // Массив с ключами полей, где хранятся изображения
-                            $images = ['image_one', 'image_two', 'image_three', 'image_four'];
-                        @endphp
+                                // Массив с ключами полей, где хранятся изображения
+                                $images = ['image_one', 'image_two', 'image_three', 'image_four'];
+                            @endphp
 
-                        @foreach ($images as $imageField)
-                            @if (!empty($pet->$imageField))
-                                <div>
-                                    <img class="h-28 max-w-full rounded-lg cursor-pointer"
-                                        src="{{ asset('storage/' . $pet->$imageField) }}"
-                                        alt="Pet image {{ $loop->iteration }}" onclick="openModal(this.src)">
-                                </div>
-                            @endif
-                        @endforeach
+                            @foreach ($images as $imageField)
+                                @if (!empty($pet->$imageField))
+                                    <div>
+                                        <img class="h-28 max-w-full rounded-lg cursor-pointer"
+                                            src="{{ asset('storage/' . $pet->$imageField) }}"
+                                            alt="Pet image {{ $loop->iteration }}" onclick="openModal(this.src)">
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                         <div class="relative w-full mt-8">
                             <label for="description"
@@ -284,7 +284,8 @@
                     <p class="mt-5 md:ml-5">Здоров'я</p>
                     <ul class="grid w-full gap-2 mt-3 md:grid-cols-3 md:ml-5">
                         <li>
-                            <input type="checkbox" id="chip" name="chip" value="1" class="hidden peer" {{ old('chip', $pet->chip) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="chip" name="chip" value="1" class="hidden peer"
+                                {{ old('chip', $pet->chip) == 1 ? 'checked' : '' }}>
                             <label for="chip"
                                 class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('chip', $pet->chip) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -293,7 +294,8 @@
                             </label>
                         </li>
                         <li>
-                            <input type="checkbox" id="sterilization" name="sterilization" value="1" class="hidden peer" {{ old('sterilization', $pet->sterilization) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="sterilization" name="sterilization" value="1"
+                                class="hidden peer" {{ old('sterilization', $pet->sterilization) == 1 ? 'checked' : '' }}>
                             <label for="sterilization"
                                 class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('sterilization', $pet->sterilization) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -302,7 +304,8 @@
                             </label>
                         </li>
                         <li>
-                            <input type="checkbox" id="vacination" name="vaccination" value="1" class="hidden peer" {{ old('vaccination', $pet->vaccination) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="vacination" name="vaccination" value="1"
+                                class="hidden peer" {{ old('vaccination', $pet->vaccination) == 1 ? 'checked' : '' }}>
                             <label for="vacination"
                                 class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('vaccination', $pet->vaccination) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -311,7 +314,8 @@
                             </label>
                         </li>
                         <li class="w-full">
-                            <input type="checkbox" id="option" name="processing" value="1" class="hidden peer" {{ old('processing', $pet->processing) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="option" name="processing" value="1" class="hidden peer"
+                                {{ old('processing', $pet->processing) == 1 ? 'checked' : '' }}>
                             <label for="option"
                                 class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('processing', $pet->processing) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center break-words">
@@ -320,11 +324,12 @@
                             </label>
                         </li>
                     </ul>
-                    
+
                     <p class="mt-5 md:ml-5">Документи</p>
                     <ul class="grid w-full gap-2 mt-3 md:grid-cols-3 md:ml-5">
                         <li>
-                            <input type="checkbox" id="pasport" name="vet_pasport" value="1" class="hidden peer" {{ old('vet_pasport', $pet->vet_pasport) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="pasport" name="vet_pasport" value="1" class="hidden peer"
+                                {{ old('vet_pasport', $pet->vet_pasport) == 1 ? 'checked' : '' }}>
                             <label for="pasport"
                                 class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('vet_pasport', $pet->vet_pasport) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -333,7 +338,8 @@
                             </label>
                         </li>
                         <li>
-                            <input type="checkbox" id="pedigree" name="pedigree" value="1" class="hidden peer" {{ old('pedigree', $pet->pedigree) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="pedigree" name="pedigree" value="1" class="hidden peer"
+                                {{ old('pedigree', $pet->pedigree) == 1 ? 'checked' : '' }}>
                             <label for="pedigree"
                                 class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('pedigree', $pet->pedigree) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -342,7 +348,8 @@
                             </label>
                         </li>
                         <li>
-                            <input type="checkbox" id="FCI/KCY" name="fci" value="1" class="hidden peer" {{ old('fci', $pet->fci) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="FCI/KCY" name="fci" value="1" class="hidden peer"
+                                {{ old('fci', $pet->fci) == 1 ? 'checked' : '' }}>
                             <label for="FCI/KCY"
                                 class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('fci', $pet->fci) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center">
@@ -351,7 +358,8 @@
                             </label>
                         </li>
                         <li class="w-full">
-                            <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer" {{ old('metrics', $pet->metrics) == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer"
+                                {{ old('metrics', $pet->metrics) == 1 ? 'checked' : '' }}>
                             <label for="metrics"
                                 class="flex items-center justify-center w-full min-w-max px-2 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 {{ old('metrics', $pet->metrics) == 1 ? 'border-violet-700 text-gray-600 dark:text-gray-500' : '' }} peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                 <div class="text-center break-words">
@@ -360,7 +368,7 @@
                             </label>
                         </li>
                     </ul>
-                    
+
 
                     <div class="md:flex md:pl-24 mt-12 md:mt-0">
                         <a href="#"

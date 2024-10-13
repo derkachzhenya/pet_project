@@ -31,6 +31,7 @@ class Pet extends Model
       'pedigree',
       'fci',
       'metrics',
+      'status',
    ];
 
    public function user(): BelongsTo

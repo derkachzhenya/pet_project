@@ -14,7 +14,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard', ['pets' => Pet::with('user',)->latest()->get()]);
+        $user = auth()->user();
+        $pets = Pet::where('user_id', $user->id)->get();
+        $activePetsCount = $pets->where('status', 'active')->count();
+        $inactivePetsCount = $pets->where('status', 'inactive')->count();
+
+        return view('dashboard', compact('pets', 'activePetsCount', 'inactivePetsCount'));
     }
 
     public function show(Pet $pet)
@@ -57,9 +62,9 @@ class DashboardController extends Controller
             'categorylocal_id' => 'required|exists:categorylocals,id',
             // добавьте другие поля по необходимости
         ]);
-    
+
         $pet->update($validatedData);
-    
+
         // Обновление чекбоксов
         $pet->chip = $request->has('chip');
         $pet->sterilization = $request->has('sterilization');
@@ -69,9 +74,9 @@ class DashboardController extends Controller
         $pet->pedigree = $request->has('pedigree');
         $pet->fci = $request->has('fci');
         $pet->metrics = $request->has('metrics');
-    
+
         $pet->save();
-    
+
         return redirect()->route('dashboard.show', $pet)->with('success', 'Pet updated successfully');
     }
 

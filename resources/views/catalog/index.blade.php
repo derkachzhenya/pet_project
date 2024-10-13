@@ -28,20 +28,20 @@
         </div>
         <div class="flex justify-between">
             <div class="w-1/4">
-                <form action="">
+                <form action="{{ route('catalog.index') }}" method="GET">
                     <div class="relative w-40 md:w-full">
                         <label for="countries "
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Вид
                             тварин</label>
-                        <select id="countries"
+                        <select id="countries" name="category_id"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="" disabled {{ old('category_id') ? '' : 'selected' }}>Оберіть вид тварини
+                            <option value="" {{ old('category_id') ? '' : 'selected' }}>Оберіть вид тварини
                             </option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
-                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                    {{ request('category_id') == $category->id ? 'selected' : '' }}>
                                     {{ $category->title }}
                                 </option>
                             @endforeach
@@ -50,11 +50,11 @@
                     <div class="mt-5 relative w-40 md:w-full">
                         <label for="countries"
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Різновид</label>
-                        <select id="countries"
+                        <select id="countries" name="categoryvariety_id"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="" disabled {{ old('categoryvariety_id') == '' ? 'selected' : '' }}>Оберіть
+                            <option value="" {{ old('categoryvariety_id') == '' ? 'selected' : '' }}>Оберіть
                                 різновид</option>
                             @foreach ($categoryvarieties as $categoryvariety)
                                 <option value="{{ $categoryvariety->id }}"
@@ -67,11 +67,11 @@
                     <div class="mt-5 relative w-40 md:w-full">
                         <label for="countries"
                             class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Локації</label>
-                        <select id="countries"
+                        <select id="countries" name="categorylocal_id"
                             class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="" disabled {{ old('categorylocal_id') ? '' : 'selected' }}>Оберіть локацію
+                            <option value="" {{ old('categorylocal_id') ? '' : 'selected' }}>Оберіть локацію
                             </option>
                             @foreach ($categorylocals as $categoryloc)
                                 <option value="{{ $categoryloc->id }}"
@@ -102,7 +102,7 @@
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                  focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="" required />
+                                placeholder="" />
                             <select id="countries"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                      focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
@@ -122,7 +122,7 @@
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                      focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                       dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="" required />
+                                    placeholder="" />
 
                                 <select id="countries"
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
@@ -140,24 +140,25 @@
                     <div class="mt-6">
                         <p class="text-lg">Ціна</p>
                         <div class="flex mt-3 gap-3">
-                            <input type="text" id="first_name"
+                            <input type="number" id="min_price" name="min_price"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                  focus:border-blue-500 block w-20 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="₴ 0" required />
+                                placeholder="₴ 0" min="0" value="{{ request('min_price') }}" />
 
-                            <input type="text" id="first_name"
+                            <input type="number" id="max_price" name="max_price"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                  focus:border-blue-500 block w-20 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-900
                                    dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="₴ 10000" required />
+                                placeholder="₴ 10000" min="0" value="{{ request('max_price') }}" />
                         </div>
                         <div>
                             <div class="flex mt-1 relative gap-3">
                                 <div class="flex items-center mb-4">
-                                    <input id="default-checkbox" type="checkbox" value=""
+                                    <input id="free" name="free" type="checkbox" value="1"
+                                        {{ request('free') ? 'checked' : '' }}
                                         class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 rounded focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="default-checkbox"
+                                    <label for="free"
                                         class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Безкоштовно</label>
                                 </div>
                             </div>
@@ -209,8 +210,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="chip" value="" class="hidden peer"
-                                        required="">
+                                    <input type="checkbox" id="chip" value="" class="hidden peer">
                                     <label for="chip"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -244,8 +244,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="pasport" value="" class="hidden peer"
-                                        required="">
+                                    <input type="checkbox" id="pasport" value="" class="hidden peer">
                                     <label for="pasport"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -280,12 +279,10 @@
                                     <span>Застосувати фільтри</span>
                                 </button>
 
-                                <a href="#"
-                                    class="flex items-center justify-center ml-16 md:ml-0 w-48 md:w-64 mt-2 bg-white focus:outline-none focus:ring-4
-                                          focus:ring-gray-300 font-medium rounded-full text-sm px-4 py-2.5 mb-2 border-2
-                                          border-gray-600 text-center">
+                                <a href="{{ route('catalog.index') }}"
+                                    class="flex items-center justify-center ml-16 md:ml-0 w-48 md:w-64 mt-2 bg-white focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-4 py-2.5 mb-2 border-2 border-gray-600 text-center">
                                     <img class="mr-2 h-3" src="{{ asset('search/close.png') }}" alt="buttonImg">
-                                    <span>Очістити фільтри</span>
+                                    <span>Очистити фільтри</span>
                                 </a>
                             </div>
                         </div>

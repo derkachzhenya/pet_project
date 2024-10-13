@@ -71,8 +71,8 @@
                 <div class="mt-12">
                     <p class="ml-6 text-xl font-semibold">Оголошення</p>
                     <div class="flex ml-8 mt-3">
-                        <a class="mr-5" href="">Активні(0)</a>
-                        <a href="">Неактивні(0)</a>
+                        <a class="mr-5" href="">Активні({{ $activePetsCount }})</a>
+                        <a href="">Неактивні({{ $inactivePetsCount }})</a>
                     </div>
                 </div>
                 <hr class="mx-5 mb-6 shadow-lg">

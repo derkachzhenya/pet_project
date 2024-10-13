@@ -34,6 +34,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::factory()->create([
+            'title' => 'Птахи',
+        ]);
+
+        Category::factory()->create([
             'title' => 'Гризуни',
         ]);
 
