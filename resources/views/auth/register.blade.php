@@ -48,7 +48,7 @@
         </div>
 
         <!-- Location -->
-        <div class="mt-4">
+        {{-- <div class="mt-4">
             <x-input-label for="location">
                 {{ __('Локація') }}<span class="text-red-500">*</span>
             </x-input-label>
@@ -59,7 +59,7 @@
                 <option value="CA">Canada</option>
             </select>
             <x-input-error :messages="$errors->get('location')" class="mt-2" />
-        </div>
+        </div> --}}
 
         <!-- Password -->
         <div class="mt-4">

@@ -65,7 +65,7 @@
                         <p class="pl-1">Номер телефону</p>
                     </div>
                     <div class="flex mt-2 md:mt-0">
-                        <p class="pr-1">+380958678941</p>
+                        <p class="pr-1">{{ $pet->user->phone }}</p>
                         <img src="{{ asset('telegram.png') }}" class="h-5 w-5 my-auto" alt="">
                     </div>
                 </div>
