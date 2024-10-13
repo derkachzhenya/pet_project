@@ -19,6 +19,7 @@ class CatalogController extends Controller
     {
         $query = Pet::with('user');
 
+        // Existing filters
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -39,7 +40,7 @@ class CatalogController extends Controller
             $query->where('gender', $request->gender);
         }
 
-        // Фильтрация по цене
+        // Price filtering
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->min_price);
         }
@@ -52,13 +53,47 @@ class CatalogController extends Controller
             $query->where('price', 0);
         }
 
-        // Фильтрация по возрасту
+        // Age filtering
         if ($request->filled('min_age')) {
             $query->where('age', '>=', $request->min_age);
         }
 
         if ($request->filled('max_age')) {
             $query->where('age', '<=', $request->max_age);
+        }
+
+        // Previous new filters
+        if ($request->has('sterilization')) {
+            $query->where('sterilization', true);
+        }
+
+        if ($request->has('vaccination')) {
+            $query->where('vaccination', true);
+        }
+
+        if ($request->has('chip')) {
+            $query->where('chip', true);
+        }
+
+        if ($request->has('parasite_treatment')) {
+            $query->where('parasite_treatment', true);
+        }
+
+        // New filters
+        if ($request->has('vet_pasport')) {
+            $query->where('vet_pasport', true);
+        }
+
+        if ($request->has('pedigree')) {
+            $query->where('pedigree', true);
+        }
+
+        if ($request->has('fci')) {
+            $query->where('fci', true);
+        }
+
+        if ($request->has('metrics')) {
+            $query->where('metrics', true);
         }
 
         $pets = $query->latest()->paginate(9);
@@ -68,9 +103,8 @@ class CatalogController extends Controller
         $categoryages = Categoryage::all();
 
         return view('catalog.index', compact('pets', 'categories', 'categoryvarieties', 
-        'categorylocals', 'categoryages'));
+            'categorylocals', 'categoryages'));
     }
-
   
 
     public function create()

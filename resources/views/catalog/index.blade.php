@@ -191,7 +191,7 @@
                         <div class="mt-3">
                             <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
                                 <li>
-                                    <input type="checkbox" id="sterilization" value="" class="hidden peer">
+                                    <input type="checkbox" id="sterilization" name="sterilization" value="1" class="hidden peer" {{ request('sterilization') ? 'checked' : '' }}>
                                     <label for="sterilization"
                                         class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -200,8 +200,8 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="vacination" value="" class="hidden peer">
-                                    <label for="vacination"
+                                    <input type="checkbox" id="vaccination" name="vaccination" value="1" class="hidden peer" {{ request('vaccination') ? 'checked' : '' }}>
+                                    <label for="vaccination"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
                                             <div class="w-full">Вакцинація</div>
@@ -209,7 +209,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="chip" value="" class="hidden peer">
+                                    <input type="checkbox" id="chip" name="chip" value="1" class="hidden peer" {{ request('chip') ? 'checked' : '' }}>
                                     <label for="chip"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -218,8 +218,8 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="checkbox" id="option" value="" class="hidden peer">
-                                    <label for="option"
+                                    <input type="checkbox" id="parasite_treatment" name="parasite_treatment" value="1" class="hidden peer" {{ request('parasite_treatment') ? 'checked' : '' }}>
+                                    <label for="parasite_treatment"
                                         class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center break-words">
                                             Обробка від паразитів
@@ -234,8 +234,8 @@
                         <div class="mt-3">
                             <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
                                 <li>
-                                    <input type="checkbox" id="FCI/KCY" value="" class="hidden peer">
-                                    <label for="FCI/KCY"
+                                    <input type="checkbox" id="fci" name="fci" value="1" class="hidden peer" {{ request('fci') ? 'checked' : '' }}>
+                                    <label for="fci"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
                                             <div class="w-full">FCI/KCY</div>
@@ -243,8 +243,8 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="pasport" value="" class="hidden peer">
-                                    <label for="pasport"
+                                    <input type="checkbox" id="vet_pasport" name="vet_pasport" value="1" class="hidden peer" {{ request('vet_pasport') ? 'checked' : '' }}>
+                                    <label for="vet_pasport"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
                                             <div class="w-full">Вет паспорт</div>
@@ -252,7 +252,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="pedigree" value="" class="hidden peer">
+                                    <input type="checkbox" id="pedigree" name="pedigree" value="1" class="hidden peer" {{ request('pedigree') ? 'checked' : '' }}>
                                     <label for="pedigree"
                                         class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -261,7 +261,7 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="checkbox" id="metrics" value="" class="hidden peer">
+                                    <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer" {{ request('metrics') ? 'checked' : '' }}>
                                     <label for="metrics"
                                         class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center break-words">
