@@ -16,10 +16,22 @@ class ProfileController extends Controller
     
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-            'pets' => Pet::with('user')->latest()->get(),
-        ]);
+        $user = $request->user();
+    
+    // Получаем объявления пользователя
+    $pets = Pet::with('user')->where('user_id', $user->id)->latest()->get();
+
+    // Считаем количество активных и неактивных объявлений
+    $activePetsCount = $pets->where('status', 'active')->count();
+    $inactivePetsCount = $pets->where('status', 'inactive')->count();
+
+    // Передаем эти данные в представление
+    return view('profile.edit', [
+        'user' => $user,
+        'pets' => $pets,
+        'activePetsCount' => $activePetsCount,
+        'inactivePetsCount' => $inactivePetsCount,
+    ]);
     }
 
    

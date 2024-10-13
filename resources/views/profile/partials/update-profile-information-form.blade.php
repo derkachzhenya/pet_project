@@ -126,12 +126,31 @@
         </div>
     </form>
 
+    <div x-data="{ open: false }"
+    @if (session('status') === 'profile-updated') 
+        x-init="open = true; setTimeout(() => open = false, 3000)" 
+    @endif
+    x-show="open" 
+    class="fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-50"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-90"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-90">
+   <div class="bg-white p-6 rounded-lg shadow-lg">
+       <h2 class="text-lg font-semibold">Збережено успішно!</h2>
+       <p class="mt-2 text-gray-600">Ваші зміни були успішно збережені.</p>
+       <button @click="open = false" class="mt-4 bg-violet-600 text-white px-4 py-2 rounded hover:bg-violet-700">Закрити</button>
+   </div>
+</div>
+
 
     <div class="mt-12">
         <p class="ml-6 text-xl font-semibold">Оголошення</p>
         <div class="flex ml-8 mt-3">
-            <a class="mr-5" href="">Активні(0)</a>
-            <a href="">Неактивні(0)</a>
+            <a class="mr-5" href="">Активні({{ $activePetsCount }})</a>
+            <a href="">Неактивні({{ $inactivePetsCount }})</a>
         </div>
     </div>
     <hr class="mx-5 mb-6 shadow-lg">

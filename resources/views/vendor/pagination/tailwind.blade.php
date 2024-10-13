@@ -33,7 +33,7 @@
                     @endif
                     {!! __('з') !!}
                     <span class="font-medium">{{ $paginator->total() }}</span>
-                    {!! __('сторінок') !!}
+                    {!! __('оголошень') !!}
                 </p>
             </div>
 
