@@ -80,5 +80,13 @@ class DashboardController extends Controller
         return redirect()->route('dashboard.show', $pet)->with('success', 'Pet updated successfully');
     }
 
+    public function deactivate(Pet $pet)
+    {
+        $pet->status = $pet->status === 'active' ? 'inactive' : 'active';
+        $pet->save();
+
+        return redirect()->back()->with('success', 'Статус оголошення змінено');
+    }
+
 
 }

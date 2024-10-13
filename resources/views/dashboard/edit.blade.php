@@ -370,17 +370,14 @@
                     </ul>
 
 
-                    <div class="md:flex md:pl-24 mt-12 md:mt-0">
-                        <a href="#"
-                            class="text-violet-800 mt-6 ml-16 md:ml-0 bg-white focus:outline-none focus:ring-4
-                               focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
-                               border-violet-800 w-full text-center">Деактивувати</a>
+                    <div class="md:flex md:pl-24 mt-12 md:mt-0 justify-end"> <!-- Добавлено justify-end -->
                         <button type="submit"
                             class="text-white mt-6 ml-3 md:ml-0 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
-                               focus:ring-gray-300 font-medium rounded-full text-sm px-16 py-2.5 mb-2
-                               w-full text-center">Зберегти
-                            </buttom>
+                                   focus:ring-gray-300 font-medium rounded-full text-sm px-16 py-2.5 mb-2
+                                   w-1/2 text-center">Зберегти
+                        </button>
                     </div>
+                    
 
                 </div>
             </div>

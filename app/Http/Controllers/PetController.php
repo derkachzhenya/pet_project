@@ -19,7 +19,7 @@ class PetController extends Controller
 
     public function index()
     {
-        $categories = Category::all();  
+        $categories = Category::all();
         $categorylocals = Categorylocal::all();
         return view('pets.create-step-one', compact('categories', 'categorylocals'));
     }
@@ -58,7 +58,7 @@ class PetController extends Controller
         $validatedData = $request->validated();
 
         $pet = $request->session()->get('pet');
-    
+
 
         if (!$pet) {
             return redirect()->route('pet.create.step.one')
@@ -101,13 +101,13 @@ class PetController extends Controller
         $validatedData = $request->validated();
 
         $pet = $request->session()->get('pet');
-    
+
 
         if (!$pet) {
 
             return redirect()->route('pet.create.step.one')->with('error', 'Информация о питомце не найдена. Пожалуйста, начните сначала.');
         }
-  
+
         $pet->description = $validatedData['description'];
         $pet->categorycolor_id = $validatedData['categorycolor_id'];
         if ($request->hasFile('main_image')) {
@@ -134,7 +134,7 @@ class PetController extends Controller
             $path = $request->file('image_four')->store('images', 'public');
             $pet->image_four = $path;
         }
-        
+
         $pet->save();
 
 
@@ -185,6 +185,15 @@ class PetController extends Controller
         $categoryages = Categoryage::all(); // Добавьте это, если хотите фильтровать по возрасту
 
         return view('pets.index', compact('pets', 'categories', 'categorylocals', 'categoryages'));
+    }
+
+
+    public function deactivate(Pet $pet)
+    {
+        $pet->status = $pet->status === 'active' ? 'inactive' : 'active';
+        $pet->save();
+
+        return redirect()->back()->with('success', 'Статус оголошення змінено');
     }
 
     public function create()

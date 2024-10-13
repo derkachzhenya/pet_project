@@ -13,9 +13,9 @@ class HomeController extends Controller
     {
         $catsCount = Pet::where('category_id', 2)->count();
         $dogsCount = Pet::where('category_id', 1)->count();
-        $birdsCount = Pet::where('category_id', 1)->count();
-        $rodentsCount = Pet::where('category_id', 1)->count();
-        $reptilesCount = Pet::where('category_id', 1)->count();
+        $birdsCount = Pet::where('category_id', 3)->count();
+        $rodentsCount = Pet::where('category_id', 4)->count();
+        $reptilesCount = Pet::where('category_id', 5)->count();
 
         $categories = Category::all();
         $categorylocals = Categorylocal::all();

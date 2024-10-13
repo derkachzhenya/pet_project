@@ -6,24 +6,24 @@
                 <div class="grid gap-4">
                     <div class="w-2/3 md:w-full mx-auto">
                         <img class="h-auto max-w-full rounded-lg cursor-pointer"
-                            src="{{ asset('storage/' . $pet->main_image) }}" alt="Main pet image"
+                            src="{{ asset('storage/' . $pet->main_image)}}" alt="Main pet image"
                             onclick="openModal(this.src)">
                     </div>
                     <div class="grid grid-cols-4 gap-4 w-2/3 md:w-full mx-auto mt-4">
                         @php
-                            // Массив с ключами полей, где хранятся изображения
-                            $images = ['image_one', 'image_two', 'image_three', 'image_four'];
-                        @endphp
-
-                        @foreach ($images as $imageField)
-                            @if (!empty($pet->$imageField))
-                                <div>
-                                    <img class="h-28 max-w-full rounded-lg cursor-pointer"
-                                        src="{{ asset('storage/' . $pet->$imageField) }}"
-                                        alt="Pet image {{ $loop->iteration }}" onclick="openModal(this.src)">
-                                </div>
-                            @endif
-                        @endforeach
+                        // Массив с ключами полей, где хранятся изображения
+                        $images = ['image_one', 'image_two', 'image_three', 'image_four']; 
+                    @endphp
+                    
+                    @foreach ($images as $imageField)
+                        @if(!empty($pet->$imageField))
+                            <div>
+                                <img class="h-28 max-w-full rounded-lg cursor-pointer"
+                                     src="{{ asset('storage/' . $pet->$imageField) }}"
+                                     alt="Pet image {{ $loop->iteration }}" onclick="openModal(this.src)">
+                            </div>
+                        @endif
+                    @endforeach
                     </div>
                     <div class="mb-12 mt-8 mx-auto md:mx-0">
                         <p class="font-semibold">Додаткова інформація</p>
@@ -33,7 +33,7 @@
             </div>
             <div class="w-3/4 mx-auto md:mx-0">
                 <p class="ml-5 text-3xl font-semibold">{{ $pet->title }}</p>
-                <p class="ml-5 mt-3 text-2xl font-semibold">
+                <p class="ml-5 mt-3 text-2xl font-semibold"> 
                     @if ($pet->price == 0)
                         <span>Безкоштовно</span>
                     @else
@@ -168,51 +168,55 @@
                     </div>
                     <div class="md:flex mt-3">
                         @if ($pet->sterilization == 1)
-                            <div class="mr-2  md:mt-0">
-                                <label for="sterilization"
-                                    class="flex items-center justify-center w-full px-3 h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Стерилізація</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2  md:mt-0">
+                            <label for="sterilization"
+                                class="flex items-center justify-center w-full px-3 h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Стерилізація</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->vaccination == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="vacination"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Вакцинація</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="vacination"
+                                class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Вакцинація</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->chip == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="chip"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Чіп</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="chip"
+                                class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Чіп</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->processing == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="option"
-                                    class="flex items-center justify-center w-full px-3 min-w-max bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center break-words">
-                                        Обробка від паразитів
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="option"
+                                class="flex items-center justify-center w-full px-3 min-w-max bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center break-words">
+                                    Обробка від паразитів
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
                     </div>
                 </div>
@@ -233,51 +237,55 @@
                     </div>
                     <div class="md:flex mt-3">
                         @if ($pet->vet_pasport == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="pasport"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Вет паспорт</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="pasport"
+                                class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Вет паспорт</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->pedigree == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="pedigree"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">Родовід</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="pedigree"
+                                class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">Родовід</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->fci == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="FCI/KCY"
-                                    class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center">
-                                        <div class="w-full">FCI/KCY</div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="FCI/KCY"
+                                class="flex items-center justify-center w-full px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center">
+                                    <div class="w-full">FCI/KCY</div>
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
 
                         @if ($pet->metrics == 1)
-                            <div class="mr-2 mt-2 md:mt-0">
-                                <label for="metrics"
-                                    class="flex items-center justify-center w-full min-w-max px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-                                    <div class="text-center break-words">
-                                        Метрика цуценяти
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="mr-2 mt-2 md:mt-0">
+                            <label for="metrics"
+                                class="flex items-center justify-center w-full min-w-max px-3 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <div class="text-center break-words">
+                                    Метрика цуценяти
+                                </div>
+                            </label>
+                        </div>
                         @else
+                        
                         @endif
                     </div>
                 </div>

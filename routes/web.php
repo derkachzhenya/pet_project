@@ -20,8 +20,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/{pet}', [DashboardController::class, 'show'])->name('dashboard.show');
     Route::get('/dashboard/{pet}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
     Route::put('dashboard/{pet}', [DashboardController::class, 'update'])->name('dashboard.update');
+    Route::put('/dashboard/{pet}/deactivate', [DashboardController::class, 'deactivate'])->name('dashboard.deactivate');
 });
 
+Route::post('/pets/{pet}/toggle-status', [DashboardController::class, 'toggleStatus'])->name('pets.toggle-status');
+Route::get('/pets', [PetController::class, 'indexAll'])->name('pets.index');
 
 
 Route::middleware('auth')->group(function () {

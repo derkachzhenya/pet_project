@@ -96,43 +96,42 @@
                     <div class="mt-6">
                         <p class="text-lg">Вік</p>
                         <div class="flex mt-3 relative gap-3">
-                            <label for="countries"
+                            <label for="min_age"
                                 class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Мін</label>
-                            <input type="text" id="first_name"
+                            <input type="text" id="min_age" name="min_age"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                  focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="" />
-                            <select id="countries"
+                                placeholder="Мінімальний вік" />
+                            <select id="min_age_period" name="min_age_period"
                                 class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                     focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                      dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                 focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Період</option>
-                                <option value="US">Днів</option>
-                                <option value="CA">Тижнів</option>
-                                <option value="FR">Місяців</option>
-                                <option value="DE">Років</option>
+                                <option value="days">Днів</option>
+                                <option value="weeks">Тижнів</option>
+                                <option value="months">Місяців</option>
+                                <option value="years">Років</option>
                             </select>
                         </div>
                         <div>
                             <div class="flex mt-5 relative gap-3">
-                                <label for="countries "
+                                <label for="max_age"
                                     class="block mb-2 text-sm font-medium bg-white text-gray-900 dark:text-white absolute left-2 -top-3">Макс</label>
-                                <input type="text" id="first_name"
+                                <input type="text" id="max_age" name="max_age"
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                                      focus:border-blue-500 block w-16 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
                                       dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="" />
-
-                                <select id="countries"
+                                    placeholder="Максимальний вік" />
+                                <select id="max_age_period" name="max_age_period"
                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-                         focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-                          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                     focus:border-blue-500 block w-24 md:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+                                      dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected>Період</option>
-                                    <option value="US">Днів</option>
-                                    <option value="CA">Тижнів</option>
-                                    <option value="FR">Місяців</option>
-                                    <option value="DE">Років</option>
+                                    <option value="days">Днів</option>
+                                    <option value="weeks">Тижнів</option>
+                                    <option value="months">Місяців</option>
+                                    <option value="years">Років</option>
                                 </select>
                             </div>
                         </div>

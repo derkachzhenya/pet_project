@@ -282,11 +282,17 @@
                     </div>
                 </div>
                 <hr class="ml-5 mt-3 mb-3">
-                <div class="flex pl-24">
-                    <a href="#"
-                        class="text-violet-800 mt-6 bg-white focus:outline-none focus:ring-4
-                               focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
-                               border-violet-800 w-full text-center">Деактивувати</a>
+                <div class="flex pl-24 gap-3">
+                    <form action="{{ route('dashboard.deactivate', $pet) }}" method="POST" class="inline">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit"
+                            class="text-violet-800 mt-6 ml-16 md:ml-0 bg-white focus:outline-none focus:ring-4
+                            focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 me-2 mb-2 border-2
+                            border-violet-800 w-full text-center">
+                            {{ $pet->status === 'active' ? 'Деактивувати' : 'Активувати' }}
+                        </button>
+                    </form>
                     <a href="{{ route('dashboard.edit', $pet->id) }}"
                         class="text-white mt-6 bg-violet-800 hover:bg-violet-900 focus:outline-none focus:ring-4
                                focus:ring-gray-300 font-medium rounded-full text-sm px-14 py-2.5 mb-2
