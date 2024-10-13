@@ -19,14 +19,6 @@ class CatalogController extends Controller
     {
         $query = Pet::with('user');
 
-        if ($request->filled('gender')) {
-            if ($request->gender !== 'unknown') {
-                $query->where('gender', $request->gender);
-            } else {
-                $query->whereNull('gender');
-            }
-        }
-
         // Existing filters
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);

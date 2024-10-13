@@ -167,24 +167,21 @@
                         <p class="text-lg">Стать</p>
                         <div class="mt-3">
                             <div class="flex items-center mb-4">
-                                <input id="gender-female" type="radio" value="female" name="gender"
-                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    {{ request('gender') == 'female' ? 'checked' : '' }}>
-                                <label for="gender-female"
+                                <input id="default-radio-1" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-1"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Дівчинка</label>
                             </div>
                             <div class="flex items-center mb-4">
-                                <input id="gender-male" type="radio" value="male" name="gender"
-                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    {{ request('gender') == 'male' ? 'checked' : '' }}>
-                                <label for="gender-male"
+                                <input checked id="default-radio-2" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-2"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Хлопчик</label>
                             </div>
                             <div class="flex items-center">
-                                <input id="gender-unknown" type="radio" value="unknown" name="gender"
-                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    {{ request('gender') == 'unknown' || request('gender') == null ? 'checked' : '' }}>
-                                <label for="gender-unknown"
+                                <input checked id="default-radio-3" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 dark:focus:ring-violet-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-3"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Невідомо</label>
                             </div>
                         </div>
@@ -194,8 +191,7 @@
                         <div class="mt-3">
                             <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
                                 <li>
-                                    <input type="checkbox" id="sterilization" name="sterilization" value="1"
-                                        class="hidden peer" {{ request('sterilization') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="sterilization" name="sterilization" value="1" class="hidden peer" {{ request('sterilization') ? 'checked' : '' }}>
                                     <label for="sterilization"
                                         class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -204,8 +200,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="vaccination" name="vaccination" value="1"
-                                        class="hidden peer" {{ request('vaccination') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="vaccination" name="vaccination" value="1" class="hidden peer" {{ request('vaccination') ? 'checked' : '' }}>
                                     <label for="vaccination"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -214,8 +209,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="chip" name="chip" value="1"
-                                        class="hidden peer" {{ request('chip') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="chip" name="chip" value="1" class="hidden peer" {{ request('chip') ? 'checked' : '' }}>
                                     <label for="chip"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -224,9 +218,7 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="checkbox" id="parasite_treatment" name="parasite_treatment"
-                                        value="1" class="hidden peer"
-                                        {{ request('parasite_treatment') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="parasite_treatment" name="parasite_treatment" value="1" class="hidden peer" {{ request('parasite_treatment') ? 'checked' : '' }}>
                                     <label for="parasite_treatment"
                                         class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center break-words">
@@ -242,8 +234,7 @@
                         <div class="mt-3">
                             <ul class="grid w-full gap-2 mt-3 md:grid-cols-3">
                                 <li>
-                                    <input type="checkbox" id="fci" name="fci" value="1"
-                                        class="hidden peer" {{ request('fci') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="fci" name="fci" value="1" class="hidden peer" {{ request('fci') ? 'checked' : '' }}>
                                     <label for="fci"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -252,8 +243,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="vet_pasport" name="vet_pasport" value="1"
-                                        class="hidden peer" {{ request('vet_pasport') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="vet_pasport" name="vet_pasport" value="1" class="hidden peer" {{ request('vet_pasport') ? 'checked' : '' }}>
                                     <label for="vet_pasport"
                                         class="flex items-center justify-center w-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -262,8 +252,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="checkbox" id="pedigree" name="pedigree" value="1"
-                                        class="hidden peer" {{ request('pedigree') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="pedigree" name="pedigree" value="1" class="hidden peer" {{ request('pedigree') ? 'checked' : '' }}>
                                     <label for="pedigree"
                                         class="flex items-center justify-center w-full h-full bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center">
@@ -272,8 +261,7 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="checkbox" id="metrics" name="metrics" value="1"
-                                        class="hidden peer" {{ request('metrics') ? 'checked' : '' }}>
+                                    <input type="checkbox" id="metrics" name="metrics" value="1" class="hidden peer" {{ request('metrics') ? 'checked' : '' }}>
                                     <label for="metrics"
                                         class="flex items-center justify-center w-full min-w-max px-1 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-violet-700 hover:text-gray-600 dark:peer-checked:text-gray-500 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                                         <div class="text-center break-words">
